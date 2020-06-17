@@ -2453,7 +2453,7 @@ img.mx-auto {
   position: relative;
   display: block;
   vertical-align: middle;
-  font-size: 14px;
+  font-size: 19px;
 }
 
 .fac label {
@@ -2508,7 +2508,7 @@ img.mx-auto {
 .fac-checkbox > input[type=checkbox] + label:before {
   content: "\f00c";
   color: #FFF !important;
-  font-size: 10px !important;
+  font-size: 16px !important;
   padding-left: 2px;
 }
 
