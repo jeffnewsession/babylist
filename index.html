@@ -14,6 +14,10 @@
 <link rel="stylesheet" type="text/css" href="fonts/css/fontawesome-all.min.css">    
 <link rel="manifest" href="_manifest.json" data-pwa-version="set_in_manifest_and_pwa_js">
 <link rel="apple-touch-icon" sizes="180x180" href="app/icons/icon-192x192.png">
+<link
+rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"
+/>
 </head>
     
 <body class="theme-light" data-background="none" data-highlight="red2">
@@ -24,7 +28,7 @@
     
     <!-- header and footer bar go here-->
     <div class="header header-fixed header-logo-center">
-        <a href="index.html" class="header-title"><span>babyList</span></a>
+        <a href="http://127.0.0.1:5500/index.html" class="header-title"><span>babyList</span></a>
     </div>
     <!--
     <div id="footer-bar" class="footer-bar-1">
@@ -33,8 +37,12 @@
     -->
     
     <!--start of page content, add your stuff here-->
-    <div id="thisisindex"></div>
-    <div class="page-content header-clear-medium">
+
+
+
+    <!--INTROPAGE STARTS HERE-->
+    
+    <div class="page-content header-clear-medium" id="intropage">
 
         
         <div class="card full-page-card">
@@ -88,21 +96,170 @@
                 </a>
 
             </div>
+            </div>
+
+            </div>               
+        </div>  
+    </div>    
+    <!--INTROPAGE ENDS HERE-->
+
+
+    <!--APPMAIN STARTS HERE-->
+
+    <div class="page-content header-clear-medium invisible" id="appmain">
+        <div class="card full-page-card">
+            <div class="content">
+
+                <div class="card" id="colored-collapse">
+                    <div class="content">
+                        <h4 class="bolder">Colored Collapse</h4>
+                        <p>
+                            Simple link list that can get tapped to reveal more content. We used links in our example, you can use anything you want.
+                        </p>
+                    </div>    
                 </div>
 
+                <!--COLLAPSE LISTS STARTS-->
+                <div class="card card-style mb-3">
+                    <div class="list-group list-custom-small list-icon-0 bg-green1-dark pl-3 pr-4">
+                        <a data-toggle="collapse" href="#collapse-5">
+                            <i class="fa font-14 fa-phone"></i>
+                            <span class="font-14 color-white">Playground session</span>
+                            <i class="fa fa-angle-down"></i>
+                        </a>        
+                    </div>
+                    <div class="collapse pl-2 pr-4" id="collapse-5">
+                        
+                        <div class="input-style input-style-2 input-required list-item-margin">
+                            <span class="color-highlight">Add new item</span>
+                            <em>(required)</em>
+                            <input class="form-control" type="email" placeholder="">
+                            <a href="#" class="btn btn-m btn-full mb-3 rounded-0 text-uppercase font-900 shadow-s bg-red2-light">Button</a>
+                        </div> 
+
+                        <!--LIST START-->
+                        <div class="fac fac-checkbox fac-default list-item-margin"><span></span>
+                            <input id="box1-fac-checkbox" type="checkbox" value="0" checked>
+                            <label for="box1-fac-checkbox">Simple</label>
+                        </div>
+                        <div class="fac fac-checkbox fac-blue list-item-margin"><span></span>
+                            <input id="box2-fac-checkbox" type="checkbox" value="0" checked>
+                            <label for="box2-fac-checkbox">Primary</label>
+                        </div>
+                        <div class="fac fac-checkbox fac-green list-item-margin"><span></span>
+                            <input id="box3-fac-checkbox" type="checkbox" value="0">
+                            <label for="box3-fac-checkbox">Success</label>
+                        </div>
+                        <div class="fac fac-checkbox fac-orange list-item-margin"><span></span>
+                            <input id="box5-fac-checkbox" type="checkbox" value="0">
+                            <label for="box5-fac-checkbox">Warning</label>
+                        </div>
+                        <div class="fac fac-checkbox fac-red list-item-margin" style="margin-bottom: 2vh;"><span></span>
+                            <input id="box6-fac-checkbox" type="checkbox" value="0">
+                            <label for="box6-fac-checkbox">Danger</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card card-style mb-3">
+                    <div class="list-group list-custom-small list-icon-0 bg-red2-dark pl-3 pr-4">
+                        <a data-toggle="collapse" href="#collapse-6">
+                            <i class="fa font-14 fa-share-alt"></i>
+                            <span class="font-14 color-white">Daytrip</span>
+                            <i class="fa fa-angle-down"></i>
+                        </a>        
+                    </div>
+                    <div class="collapse pl-2 pr-4" id="collapse-6">
+                        <div class="list-group list-custom-small">
+                            <a href="#">
+                                <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+                                <label for="vehicle1"> I have a bike</label>
+                            </a>        
+                            <a href="#">
+                                <i class="fac fac-radio fac-red"></i>
+                                <span>Twitter</span>
+                                <i class="fa fa-angle-right"></i>
+                            </a>        
+                            <a href="#" class="border-0">
+                                <i class="fab font-13 fa-linkedin color-linkedin"></i>
+                                <span>Linkedin</span>
+                                <i class="fa fa-angle-right"></i>
+                            </a>        
+                        </div>
+                    </div>
+                </div>        
+                
+                <div class="card card-style mb-3">
+                    <div class="list-group list-custom-small list-icon-0 bg-blue2-dark pl-3 pr-4">
+                        <a data-toggle="collapse" href="#collapse-7">
+                            <i class="fa font-14 fa-envelope"></i>
+                            <span class="font-14 color-white">Vacation</span>
+                            <i class="fa fa-angle-down"></i>
+                        </a>        
+                    </div>
+                    <div class="collapse pl-2 pr-4" id="collapse-7">
+                        <div class="list-group list-custom-small">
+                            <a href="#">
+                                <i class="fa font-13 fa-home color-green1-dark"></i>
+                                <span>home@domain.com</span>
+                                <i class="fa fa-angle-right"></i>
+                            </a>        
+                            <a href="#">
+                                <i class="fa font-13 fa-suitcase color-brown1-light"></i>
+                                <span>business@domain.com</span>
+                                <i class="fa fa-angle-right"></i>
+                            </a>        
+                            <a href="#" class="border-0">
+                                <i class="fa font-13 fa-building color-gray2-dark"></i>
+                                <span>office@domain.com</span>
+                                <i class="fa fa-angle-right"></i>
+                            </a>        
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card card-style">
+                    <div class="list-group list-custom-small list-icon-0 bg-blue2-dark pl-3 pr-4">
+                        <a data-toggle="collapse" href="#collapse-7">
+                            <i class="fa font-14 fa-envelope"></i>
+                            <span class="font-14 color-white">Custom list</span>
+                            <i class="fa fa-angle-down"></i>
+                        </a>        
+                    </div>
+                    <div class="collapse pl-2 pr-4" id="collapse-7">
+                        <div class="list-group list-custom-small">
+                            <a href="#">
+                                <i class="fa font-13 fa-home color-green1-dark"></i>
+                                <span>home@domain.com</span>
+                                <i class="fa fa-angle-right"></i>
+                            </a>        
+                            <a href="#">
+                                <i class="fa font-13 fa-suitcase color-brown1-light"></i>
+                                <span>business@domain.com</span>
+                                <i class="fa fa-angle-right"></i>
+                            </a>        
+                            <a href="#" class="border-0">
+                                <i class="fa font-13 fa-building color-gray2-dark"></i>
+                                <span>office@domain.com</span>
+                                <i class="fa fa-angle-right"></i>
+                            </a>        
+                        </div>
+                    </div>
+                </div>
+                <!--COLLAPSE LISTS END-->
+
+            </div>
+        </div>
+    </div>
+
+    <!--APPMAIN ENDS HERE-->
 
 
-            </div>   
-             
-        </div>  
-        
-        
-        
-        
-    
-            
-   
-    </div>    
+
+
+
+
+
     <!--end of page content, off canvas elements here-->
     
     
