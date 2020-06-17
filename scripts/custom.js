@@ -16,6 +16,178 @@ $(document).ready(function(){
         //Do not put inside HTML files.
         //The init_template() function will be triggered when pages open.
         
+
+
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyAeHBmZNpesm887Uvsb3TNYtpZxqXRVQC0",
+            authDomain: "babylist-1bee7.firebaseapp.com",
+            databaseURL: "https://babylist-1bee7.firebaseio.com",
+            projectId: "babylist-1bee7",
+            storageBucket: "babylist-1bee7.appspot.com",
+            messagingSenderId: "584644528293",
+            appId: "1:584644528293:web:4645a7457514ee2ede654c",
+            measurementId: "G-KPE1VZ15VJ"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+
+
+        //------------------------
+        //------AUTH CODE---------
+        //------------------------
+
+
+        const auth = firebase.auth();
+
+
+    ///REDIRECT USER FROM INDEX TO APPMAIN IF LOGGEDIN
+
+        //check if on index.html
+       /* if (document.querySelector('#thisisindex')) {
+            auth.onAuthStateChanged(function(user) {
+                if (user) {
+                    location.href = "appmain.html";
+                }
+            });
+        }; */
+
+
+
+
+    ////SIGN-UP 
+
+
+
+
+        const signupForm = document.querySelector('#signup-form');
+
+        //signup-function
+        signupForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+            // get user info
+            const email = signupForm['signup-email'].value;
+            const password = signupForm['signup-password'].value;
+
+            // sign up the user
+            auth.createUserWithEmailAndPassword(email, password).then(cred => {
+                console.log(cred.user);
+
+            
+            // if user successfully logged-in, redirect to appmain page
+            
+            auth.onAuthStateChanged(function(user) {
+                if (user) {
+                    location.href = "appmain.html";
+                } else {
+                  console.log('no user is logged-in')
+                }
+              });
+              
+            
+            });
+        });
+
+  
+
+
+    /// User variable, value will come from login function below
+    var userId;
+    
+
+    //// LOGIN
+
+
+        const loginForm = document.querySelector('#login-form');
+
+        //login-function
+        loginForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+            // get user info
+            const email = loginForm['login-email'].value;
+            const password = loginForm['login-password'].value;
+
+            // log the user in
+            auth.signInWithEmailAndPassword(email, password).then((cred) => {
+                console.log(cred.user)
+            });
+
+            // if user successfully logged-in, redirect to appmain page + assign user ID to variable above
+            auth.onAuthStateChanged(function(user) {
+                if (user) {
+                    //assign user ID to variable above
+                    userId = user.uid
+                    console.log('users ID is: ' + userId)
+                    console.log(document.getElementById("menu-signin").className)
+                    //document.getElementById("menu-signin").classList.remove("menu-active")
+                    $('#menu-signin').hideMenu();
+
+                    //make the intropage div invisible
+                    var element = document.getElementById("intropage");
+                    element.classList.add("invisible");
+
+                    
+                    setTimeout(function(){ 
+                        var element = document.getElementById("appmain");
+                        element.classList.remove("invisible"); 
+                        element.classList.add('animate__animated', 'animate__fadeInUp');
+                    }, 100);
+
+                } else {
+                    console.log('no user is logged-in')
+                    }
+            });
+
+        });
+
+
+
+    //GET CURRENT USER (email)
+
+    /*auth.onAuthStateChanged(function(user) {
+        if (user) {
+          console.log(user.email)
+        } else {
+          console.log('no user is logged-in')
+        }
+      });
+*/
+
+
+    //// IF LOGED-IN...
+
+
+        auth.onAuthStateChanged(function(user) {
+            if (user) {
+              //document.getElementById("usernamedisplay").innerHTML = user.email;
+              //document.getElementById("usermsg").innerHTML = `Hi, ${user.email}`;
+console.log(user.uid)
+              //LOG OUT
+              const logout = document.querySelector('#logout');
+              logout.addEventListener('click', (e) => {
+              e.preventDefault();
+              auth.signOut();
+              });
+            } 
+          });
+    
+
+
+
+
+
+        //------------------------
+        //------FIRESTORE CODE----
+        //------------------------
+
+
+
+
+
+
                
         //Generating Dynamic Styles to decrease CSS size and execute faster loading times. 
         var colorsArray = [
@@ -26,6 +198,10 @@ $(document).ready(function(){
             ["none","","",""], 
             ["plum","#6772A4","#6772A4","#3D3949"], 
             ["violet","#673c58","#673c58","#492D3D"], 
+            ["nicepink","#ee4860","#ee4860","#ee4860"],
+            ["nicebrown","#e7a760","#e7a760","#e7a760"],
+            ["nicebeige","#ffe1b1","#ffe1b1","#ffe1b1"],
+            ["niceblue","#637f87","#637f87","#637f87"], 
             ["magenta3","#413a65","#413a65","#2b2741"], 
             ["red3","#c62f50","#6F1025","#6F1025"], 
             ["green3","#6eb148","#2d7335","#2d7335"], 
@@ -365,7 +541,7 @@ $(document).ready(function(){
         //Owl Carousel Sliders
         setTimeout(function(){
             $('.user-slider').owlCarousel({loop:false, margin:20, nav:false, lazyLoad:true, items:1, autoplay: false, dots:false, autoplayTimeout:4000});		
-            $('.single-slider').owlCarousel({loop:true, margin:20, nav:false, lazyLoad:true, items:1, autoplay: true, autoplayTimeout:4000});		
+            $('.single-slider').owlCarousel({loop:true, margin:20, nav:false, lazyLoad:true, items:1, autoplay: true, autoplayTimeout:2000});		
             $('.cover-slider').owlCarousel({loop:true, margin:0, nav:false, lazyLoad:true, items:1, autoplay: true, autoplayTimeout:6000});		
             $('.double-slider').owlCarousel({loop:true, margin:20, nav:false, lazyLoad:false, items:2, autoplay: true, autoplayTimeout:4000});		
             $('.task-slider').owlCarousel({loop:true, margin:20, nav:false, stagePadding:50, lazyLoad:true, items:2, autoplay: false, autoplayTimeout:4000});		
