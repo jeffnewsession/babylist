@@ -109,11 +109,22 @@ $(document).ready(function(){
                 element2.classList.remove("invisible");   
                 document.getElementById("usernamedisplay").innerHTML = user.email;             
             }, 100);
+            var carouselIntroPage = document.getElementById("carouselIntroPage");
+            carouselIntroPage.classList.add("invisible"); 
+            var signinMenu = document.getElementById("intropage");
+            signinMenu.classList.add("invisible");  
 
         } else {
             //show INTROPAGE  
+            var signinMenu = document.getElementById("menu-signin");
+            signinMenu.classList.remove("invisible");  
             var element = document.getElementById("intropage");
-            element.classList.remove("invisible");
+            element.classList.remove("invisible");            
+            setTimeout(() => {
+                var carouselIntroPage = document.getElementById("carouselIntroPage");
+                carouselIntroPage.classList.remove("invisible"); 
+              }, 400);   
+
             }
       });
     };
@@ -147,6 +158,8 @@ $(document).ready(function(){
                     //hide intropage
                     var element = document.getElementById("intropage");
                     element.classList.add("invisible"); 
+                    var signinMenu = document.getElementById("intropage");
+                    signinMenu.classList.add("invisible");  
 
                     //document.getElementById("menu-signin").classList.remove("menu-active")
                     $('#menu-signin').hideMenu();
@@ -160,6 +173,10 @@ $(document).ready(function(){
                         element3.classList.remove("invisible");   
                         document.getElementById("usernamedisplay").innerHTML = user.email;             
                     }, 100);
+                    var carouselIntroPage = document.getElementById("carouselIntroPage");
+                    carouselIntroPage.classList.add("invisible"); 
+                    
+
 
                 } else {
                     console.log('no user is logged-in')
@@ -204,7 +221,12 @@ console.log(user.uid)
               element3.classList.add("invisible");   
               var element4 = document.getElementById("appmain");
               element4.classList.add("invisible");  
-                        
+              setTimeout(() => {
+                var carouselIntroPage = document.getElementById("carouselIntroPage");
+                carouselIntroPage.classList.remove("invisible"); 
+              }, 200);  
+              var signinMenu = document.getElementById("intropage");
+              signinMenu.classList.remove("invisible");         
               });
             } 
           });
