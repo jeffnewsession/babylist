@@ -119,7 +119,7 @@ p {
 
 /*--Header---*/
 .header-title span {
-  font-family: 'Butterfly Kids', cursive;
+  font-family: "Source Sans Pro", sans-serif;
 }
 
 .footer-title span {
@@ -152,8 +152,8 @@ p {
   position: absolute;
   height: 50px;
   line-height: 50px;
-  font-size: 30px;
-  color: #ec4c64;
+  font-size: 14px;
+  color: #000;
   font-weight: 600;
   z-index: 1;
   font-family: "Source Sans Pro", sans-serif;
@@ -2000,7 +2000,6 @@ img.mx-auto {
   border: 0px !important;
   max-height: 150000px;
   margin-bottom: 30px;
-  margin-top: -20px;
   background-position: center center !important;
 }
 
@@ -2453,7 +2452,7 @@ img.mx-auto {
   position: relative;
   display: block;
   vertical-align: middle;
-  font-size: 19px;
+  font-size: 14px;
 }
 
 .fac label {
@@ -2508,7 +2507,7 @@ img.mx-auto {
 .fac-checkbox > input[type=checkbox] + label:before {
   content: "\f00c";
   color: #FFF !important;
-  font-size: 16px !important;
+  font-size: 10px !important;
   padding-left: 2px;
 }
 
@@ -5965,151 +5964,4 @@ html.lb-disable-scrolling {
 
 .owl-dots-no-footer .owl-dots {
   transform: translateY(-18px) !important;
-}
-
-
-
-/* Custom styles */
-
-.full-page-card {
-    height: 100vh;
-    margin-bottom: -87px
-    !important
-}
-
-.full-page-card-shorter {
-    height: 60vh;
-    margin-bottom: -20px
-    !important
-}
-
-
-.card-no-bottom {
-  -webkit-transform: translate3d(0, 0, 0);
-  background-size: cover;
-  border: 0px !important;
-  max-height: 150000px;
-  margin-bottom: 30px;
-  background-position: center center !important;
-}
-
-.btn-center {
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);    
-    }
-
-.over-btn-text-margin {
-    margin-bottom: 0px;
-    margin-top: 20px;
-}
-
-.between-vert-btn-margin {
-  margin-bottom: 0px;
-  margin-top: -5px;
-}
-
-.between-vert-btn-margin2 {
-  margin-bottom: 0px;
-  margin-top: -20px;
-}
-
-.card-image-custom {
-  height: 30vh;
-  width: 40vh;
-
-}
-
-.card-image-custom2 {
-  min-height: 20vh;
-  max-height: 30vh;
-
-}
-
-.card-image-custom3 {
-  min-height: 10vh;
-  max-height: 15vh;
-
-}
-
-.margin-above-button {
-    margin-top: 20px;
-}
-
-
-.big-margin-above-button {
-    margin-top: 60px;
-}
-.margin-above-carousel {
-    margin-top: 8vh;
-}
-
-.margin-above-carousel2 {
-    margin-top: 5vh;
-}
-
-.margin-below-loginbtn {
-  margin-top: 2vh;
-}
-
-.margin-below-sharebtn {
-  margin-top: -2vh;
-}
-
-
-.image-center {
-        text-align: center;
-        display: block;
-}
-
-
-.list-custom-small2 {
-  line-height: 20px;
- !important
-}
-
-.content2 {
-  margin: 20px 15px 0px 15px;
-}
-
-#button1 , #button2 {
-display:inline-block;
-/**other codes**/
-}
-
-.center-div {
-    margin: auto;
-}
-
-.white-text {
-    opacity: 0.0;
-}
-
-.image-center2 {
-        margin-left: auto;
-    margin-right: auto;
-}
-
-.image-resize {
-  max-width: 250px;
-}
-
-.customfont {
-    font-size: 16px;
-}
-
-.delete-button {
-  float: right;
-}
-
-.list-item-margin {
-  margin-top: 1vh;
-}
-
-.invisible {
-  display: none;
-  visibility: hidden;
 }
