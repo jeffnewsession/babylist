@@ -90,35 +90,32 @@ $(document).ready(function(){
     var userId;
     
 
-    ///REDIRECT USER FROM INDEX TO APPMAIN IF LOGGEDIN
-
-
+    ///DECIDE TO SHOW INTROPAGE OR APPMAIN DEPENDING ON AUTH STATUS
 
     const checkedIfSignedIn = () => {
-    auth.onAuthStateChanged(function(user) {
+      auth.onAuthStateChanged(function(user) {
         if (user) {
             //assign user ID to variable above
             userId = user.uid
-            console.log('users ID is: ' + userId)
-            console.log(document.getElementById("menu-signin").className)
-            //document.getElementById("menu-signin").classList.remove("menu-active")
-            $('#menu-signin').hideMenu();
 
-            //make the intropage div invisible
-            var element = document.getElementById("intropage");
-            element.classList.add("invisible");
 
-            
+
+            //show APPMAIN
             setTimeout(function(){ 
                 var element = document.getElementById("appmain");
                 element.classList.remove("invisible"); 
                 element.classList.add('animate__animated', 'animate__fadeInUp');
+                var element2 = document.getElementById("profileBtn");
+                element2.classList.remove("invisible");   
+                document.getElementById("usernamedisplay").innerHTML = user.email;             
             }, 100);
 
         } else {
-            console.log('no user is logged-in')
+            //show INTROPAGE  
+            var element = document.getElementById("intropage");
+            element.classList.remove("invisible");
             }
-    });
+      });
     };
 
     checkedIfSignedIn();
@@ -141,25 +138,27 @@ $(document).ready(function(){
                 console.log(cred.user)
             });
 
-            // if user successfully logged-in, hide index and show appmain
+            // if user successfully logged-in...
             auth.onAuthStateChanged(function(user) {
                 if (user) {
                     //assign user ID to variable above
                     userId = user.uid
-                    console.log('users ID is: ' + userId)
-                    console.log(document.getElementById("menu-signin").className)
+
+                    //hide intropage
+                    var element = document.getElementById("intropage");
+                    element.classList.add("invisible"); 
+
                     //document.getElementById("menu-signin").classList.remove("menu-active")
                     $('#menu-signin').hideMenu();
 
-                    //make the intropage div invisible
-                    var element = document.getElementById("intropage");
-                    element.classList.add("invisible");
-
-                    
-                    setTimeout(function(){ 
-                        var element = document.getElementById("appmain");
-                        element.classList.remove("invisible"); 
-                        element.classList.add('animate__animated', 'animate__fadeInUp');
+                    //show appmain
+                    setTimeout(function(){
+                        var element2 = document.getElementById("appmain");
+                        element2.classList.remove("invisible"); 
+                        element2.classList.add('animate__animated', 'animate__fadeInUp');
+                        var element3 = document.getElementById("profileBtn");
+                        element3.classList.remove("invisible");   
+                        document.getElementById("usernamedisplay").innerHTML = user.email;             
                     }, 100);
 
                 } else {
@@ -191,11 +190,21 @@ $(document).ready(function(){
               //document.getElementById("usernamedisplay").innerHTML = user.email;
               //document.getElementById("usermsg").innerHTML = `Hi, ${user.email}`;
 console.log(user.uid)
-              //LOG OUT
+              
+
+
+//LOG OUT
               const logout = document.querySelector('#logout');
               logout.addEventListener('click', (e) => {
               e.preventDefault();
               auth.signOut();
+              var element2 = document.getElementById("appmain");
+              element2.classList.remove('animate__animated', 'animate__fadeInUp');
+              var element3 = document.getElementById("profileBtn");
+              element3.classList.add("invisible");   
+              var element4 = document.getElementById("appmain");
+              element4.classList.add("invisible");  
+                        
               });
             } 
           });
