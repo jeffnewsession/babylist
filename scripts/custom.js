@@ -187,30 +187,19 @@ $(document).ready(function(){
 
 
 
-    //GET CURRENT USER (email)
 
-    /*auth.onAuthStateChanged(function(user) {
-        if (user) {
-          console.log(user.email)
-        } else {
-          console.log('no user is logged-in')
-        }
-      });
-*/
-
-
-    //// IF LOGED-IN...
+         //// IF LOGED-IN...
 
 
         auth.onAuthStateChanged(function(user) {
             if (user) {
               //document.getElementById("usernamedisplay").innerHTML = user.email;
               //document.getElementById("usermsg").innerHTML = `Hi, ${user.email}`;
-console.log(user.uid)
+             console.log(user.uid)
               
 
 
-//LOG OUT
+            //LOG OUT
               const logout = document.querySelector('#logout');
               logout.addEventListener('click', (e) => {
               e.preventDefault();
@@ -241,7 +230,52 @@ console.log(user.uid)
         //------------------------
 
 
+        const db = firebase.firestore();
+        
+        db.collection('mainCollection').get().then(snapshot => {
+            snapshot.docs.forEach(doc => {
+                console.log(doc.data().userCustomID);
+            });
+        });
 
+
+        const testForm = document.querySelector('#testForm')
+
+        testForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            db.collection('mainCollection').add({
+                userCustomID: userId,
+                itemName: testForm.itemNameField.value
+            });
+        });
+
+        
+
+
+        auth.onAuthStateChanged(function(user) {
+            if (user) {
+              
+             console.log(user.uid)
+            }
+        });        
+
+
+        //define realtime listener for changes
+
+        db.collection('mainCollection').onSnapshot(snapshot => {
+            let changes = snapshot.docChanges();
+            changes.forEach(change => {
+                console.log(change.doc.data());
+                /*
+                if(change.type == 'added'){
+                    renderCafe(change.doc);
+                } else if (change.type == 'removed'){
+                    let li = cafeList.querySelector('[data-id=' + change.doc.id + ']');
+                    cafeList.removeChild(li);
+                }
+                */
+            });
+        });
 
 
 
