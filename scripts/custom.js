@@ -42,23 +42,14 @@ $(document).ready(function(){
         const auth = firebase.auth();
 
 
-    ///REDIRECT USER FROM INDEX TO APPMAIN IF LOGGEDIN
 
-        //check if on index.html
-       /* if (document.querySelector('#thisisindex')) {
-            auth.onAuthStateChanged(function(user) {
-                if (user) {
-                    location.href = "appmain.html";
-                }
-            });
-        }; */
+
+
 
 
 
 
     ////SIGN-UP 
-
-
 
 
         const signupForm = document.querySelector('#signup-form');
@@ -93,9 +84,40 @@ $(document).ready(function(){
   
 
 
+
+
     /// User variable, value will come from login function below
     var userId;
     
+    
+    ///REDIRECT USER FROM INDEX TO APPMAIN IF LOGGEDIN
+
+    auth.onAuthStateChanged(function(user) {
+        if (user) {
+            //assign user ID to variable above
+            userId = user.uid
+            console.log('users ID is: ' + userId)
+            console.log(document.getElementById("menu-signin").className)
+            //document.getElementById("menu-signin").classList.remove("menu-active")
+            $('#menu-signin').hideMenu();
+
+            //make the intropage div invisible
+            var element = document.getElementById("intropage");
+            element.classList.add("invisible");
+
+            
+            setTimeout(function(){ 
+                var element = document.getElementById("appmain");
+                element.classList.remove("invisible"); 
+                element.classList.add('animate__animated', 'animate__fadeInUp');
+            }, 100);
+
+        } else {
+            console.log('no user is logged-in')
+            }
+    });
+
+
 
     //// LOGIN
 
@@ -115,7 +137,7 @@ $(document).ready(function(){
                 console.log(cred.user)
             });
 
-            // if user successfully logged-in, redirect to appmain page + assign user ID to variable above
+            // if user successfully logged-in, hide index and show appmain
             auth.onAuthStateChanged(function(user) {
                 if (user) {
                     //assign user ID to variable above
