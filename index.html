@@ -5,13 +5,19 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover" />
-<title>StickyMobile BootStrap</title>
+<title>seazn - Cook with the seasons!</title>
 <link rel="stylesheet" type="text/css" href="styles/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="styles/style.css">
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900,900i|Source+Sans+Pro:300,300i,400,400i,600,600i,700,700i,900,900i&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+Thambi+2:wght@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Butterfly+Kids&display=swap" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="fonts/css/fontawesome-all.min.css">    
 <link rel="manifest" href="_manifest.json" data-pwa-version="set_in_manifest_and_pwa_js">
 <link rel="apple-touch-icon" sizes="180x180" href="app/icons/icon-192x192.png">
+    <link
+rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"
+/>
 </head>
     
 <body class="theme-light" data-background="none" data-highlight="red2">
@@ -20,441 +26,422 @@
     
 <div id="page">
     
+    <!-- header and footer bar go here-->
+    <div class="header header-fixed header-logo-center">
+        <a href="http://127.0.0.1:5500/index.html" class="header-title"><span>babyList</span></a>
+        <a href="#" class="header-icon header-icon-4 invisible" data-menu="menu-confirm" id="profileBtn">
+            <i class="fas fa-user-alt color-nicepink-light" id="usernamedisplay"></i>
+          </a>
+    </div>
+
+    <!--
     <div id="footer-bar" class="footer-bar-1">
-        <a href="index.html" class="active-nav"><i class="fa fa-home"></i><span>Home</span></a>
-        <a href="index-components.html"><i class="fa fa-star"></i><span>Features</span></a>
-        <a href="index-pages.html"><i class="fa fa-heart"></i><span>Pages</span></a>
-        <a href="index-search.html"><i class="fa fa-search"></i><span>Search</span></a>
-        <a href="#" data-menu="menu-settings"><i class="fa fa-cog"></i><span>Settings</span></a>
+        <a href="index.html"><i class="fa fa-home"></i><span>Home</span></a>
     </div>
-        
-    <div class="page-content header-clear-small">
+    -->
     
-        <div class="single-slider slider-boxed owl-carousel owl-no-dots">
-            <div class="card rounded-m shadow-l">
-                <div class="card-bottom text-center mb-0">
-                    <h1 class="color-white font-700 mb-n1">StickyMobile</h1>
-                    <p class="color-white opacity-80 mb-4">The Menu Everyone Requested.</p>
-                </div>
-                <div class="card-overlay bg-gradient"></div>
-                <img class="img-fluid" src="images/pictures/13.jpg">
-            </div>
-            <div class="card rounded-m shadow-l">
-                <div class="card-bottom text-center mb-0">
-                    <h1 class="color-white font-700 mb-n1">Carefuly Built</h1>
-                    <p class="color-white opacity-80 mb-4">Flexibility, Speed, Ease of Use.</p>
-                </div>
-                <div class="card-overlay bg-gradient"></div>
-                <img class="img-fluid" src="images/pictures/28.jpg">
-            </div>
+    <!--start of page content, add your stuff here-->
 
-            <div class="card rounded-m shadow-l">
-                <div class="card-bottom text-center mb-0">
-                    <h1 class="color-white font-700 mb-n1">Elite Quality</h1>
-                    <p class="color-white opacity-80 mb-4">Mobile Website, App or PWA Ready.</p>
-                </div>
-                <div class="card-overlay bg-gradient"></div>
-                <img class="img-fluid" src="images/pictures/29.jpg">
-            </div>
-        </div>    
 
-        <div class="single-slider owl-carousel owl-no-dots">
-            <div class="card card-style">
-                <div class="content mb-0">
-                    <h1 class="text-center mb-0">Call to Actions</h1>
-                    <p class="text-center color-highlight mt-n1 font-12">Sticky comes Prepared for You</p>
-                    <p class="boxed-text-xl mt-n3">
-                        Call to action are highly important, but we can't choose a style for you, so we created a few!
-                    </p>
-                    <a href="#" class="btn btn-m btn-center-l bg-red2-dark text-uppercase font-900 text-uppercase rounded-s shadow-xl mb-4">Swipe Left to Begin</a>
-                </div>
-            </div>
 
-            <div class="card card-style">
-                <div class="content">
-                    <h1 class="text-center mb-0">Let's get Social</h1>
-                    <p class="text-center color-highlight mt-n1 font-12">Follow & Get in Touch with Us</p>
-                    <p class="boxed-text-xl mt-n3">
-                        It's easy. Just add your links and you're ready to go. Social links are wildely available in Sticky
-                    </p>
-                    <p class="text-center pb-2">
-                        <a href="#" class="icon icon-s rounded-s shadow-xl color-white bg-facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="icon icon-s rounded-s shadow-xl color-white bg-phone ml-2 mr-2"><i class="fa fa-phone"></i></a>
-                        <a href="#" class="icon icon-s rounded-s shadow-xl color-white bg-twitter"><i class="fab fa-twitter"></i></a>
-                    </p>
-                </div>
-            </div>
+    <!--INTROPAGE STARTS HERE-->
+    
+    <div class="page-content header-clear-medium invisible" id="intropage">
 
-            <div class="card card-style">
-                <div class="content mb-0">
-                    <h1 class="text-center mb-0">This or That?</h1>
-                    <p class="text-center color-highlight mt-n1 font-12">Which is your Favorite?</p>
-                    <p class="boxed-text-xl mt-n3">
-                        Multiple choices are awesome, highlighting them is even easier with our Call to Actions
-                    </p>
-                    <p class="text-center mt-n3 mb-0 pb-0">
-                        <a href="#" class="btn btn-m bg-green1-dark text-uppercase font-900 text-uppercase rounded-s shadow-xl mb-4 mt-3">Call Now</a>
-                        <a href="#" class="icon icon-m rounded-s opacity-40 color-theme ml-3 mr-3">or</a>
-                        <a href="#" class="btn btn-m bg-red2-dark text-uppercase font-900 text-uppercase rounded-s shadow-xl mb-4 mt-3">GET A QUOTE</a>
-                    </p>
-                </div>
-            </div>
-
-            <div class="card card-style">
-                <div class="content mb-0">
-                    <h1 class="text-center mb-0">Direct Action</h1>
-                    <p class="text-center color-highlight mt-n1 mb-2 font-12">Invite Users to Tap Button</p>
-                    <p class="boxed-text-xl">
-                         Make a button stand out at the top of your page so it's easily accessible as a first option.
-                    </p>
-                    <a href="#" class="btn btn-m btn-center-l bg-red2-dark text-uppercase font-900 text-uppercase rounded-s shadow-xl mb-4">Purchase today for $25</a>
-                </div>
-            </div>
-        </div>
         
-        <div class="card card-style">
-            <div class="content mb-0">
-                <h1 class="text-center mb-0">Packed with Goodies</h1>
-                <p class="text-center color-highlight font-11 mt-n1">The Absolute Best Products & Care for You</p>
-                <p class="boxed-text-xl mt-n3">
-                    Over 10 years of Experience in Building Gorgeous Products only for you! We are Envato Elite.
-                </p>
-                <div class="divider"></div>
-            </div>
-            <div class="row mr-2 ml-2 mb-0">
-                <div class="col-6 text-center">
-                    <i class="fa fa-trophy color-yellow1-dark fa-3x"></i>
-                    <h2 class="mt-3 mb-1">Future Proof</h2>
-                    <p>Built to last, with the latest quality code</p>
-                </div>
-                <div class="col-6 text-center">
-                    <i class="fab fa-cloudscale color-highlight fa-3x"></i>
-                    <h2 class="mt-3 mb-1">Powerful</h2>
-                    <p>Speed, Features and Flexibility all in One!</p>
-                </div>
-                <div class="col-6 text-center">
-                    <i class="fa fa-check color-green1-dark fa-3x"></i>
-                    <h2 class="mt-3 mb-1">Easy to Use</h2>
-                    <p>Customers love our work for it's ease.</p>
-                </div>
-                <div class="col-6 text-center">
-                    <i class="fa fa-life-ring color-blue2-dark fa-3x"></i>
-                    <h2 class="mt-3 mb-1">Customer Care</h2>
-                    <p>We treat others like we want to be treated.</p>
-                </div>
-            </div>
-        </div>
+        <div class="card full-page-card">
+            
+            <div class="content">
 
-        <div class="double-slider owl-carousel owl-no-dots">
-            <div class="item">
-                <div data-card-height="250" class="card rounded-m shadow-l bg-13">
-                    <div class="card-bottom text-center">
-                        <h2 class="color-white font-900 mb-0">EazyMobile</h2>
-                        <p class="text-center mb-3">
-                            <i class="fa fa-star color-yellow1-dark"></i>
-                            <i class="fa fa-star color-yellow1-dark"></i>
-                            <i class="fa fa-star color-yellow1-dark"></i>
-                            <i class="fa fa-star color-yellow1-dark"></i>
-                            <i class="fa fa-star color-yellow1-dark"></i>
-                        </p>
-                        <a href="#" class="btn btn-s btn-full text-uppercase font-900 bg-red2-dark rounded-s mr-2 ml-2 mb-2">Purchase</a>
-                    </div>
-                    <div class="card-overlay bg-gradient"></div>
+                 
+                
+                <!-- Caroussel starts below -->
+                <div class="single-slider owl-carousel owl-no-dots mb-0 invisible" id="carouselIntroPage">
+                <div data-card-height="300" class="card mb-0">
+                    <img class="image-center2 image-resize" src="images/baby/horse.png">
                 </div>
-            </div>
-            <div class="item">
-                <div data-card-height="250" class="card rounded-m shadow-l bg-27">
-                    <div class="card-bottom text-center">
-                        <h2 class="color-white font-900 mb-0">UltraMobile</h2>
-                        <p class="text-center mb-3">
-                            <i class="fa fa-star color-yellow1-dark"></i>
-                            <i class="fa fa-star color-yellow1-dark"></i>
-                            <i class="fa fa-star color-yellow1-dark"></i>
-                            <i class="fa fa-star color-yellow1-dark"></i>
-                            <i class="fa fa-star color-yellow1-dark"></i>
-                        </p>
-                        <a href="#" class="btn btn-s btn-full text-uppercase font-900 bg-red2-dark rounded-s mr-2 ml-2 mb-2">Purchase</a>
-                    </div>
-                    <div class="card-overlay bg-gradient"></div>
+                <div data-card-height="300" class="card mb-0">
+                    <img class="image-center2 image-resize" src="images/baby/bottle.png">
                 </div>
-            </div>
-            <div class="item">
-                <div data-card-height="250" class="card rounded-m shadow-l bg-17">
-                    <div class="card-bottom text-center">
-                        <h2 class="color-white font-900 mb-0">KolorMobile</h2>
-                        <p class="text-center mb-3">
-                            <i class="fa fa-star color-yellow1-dark"></i>
-                            <i class="fa fa-star color-yellow1-dark"></i>
-                            <i class="fa fa-star color-yellow1-dark"></i>
-                            <i class="fa fa-star color-yellow1-dark"></i>
-                            <i class="fa fa-star color-yellow1-dark"></i>
-                        </p>
-                        <a href="#" class="btn btn-s btn-full text-uppercase font-900 bg-red2-dark rounded-s mr-2 ml-2 mb-2">Purchase</a>
-                    </div>
-                    <div class="card-overlay bg-gradient"></div>
+                <div data-card-height="300" class="card mb-0">
+                    <img class="image-center2 image-resize" src="images/baby/longsl.png">
                 </div>
+                <div data-card-height="300" class="card mb-0">
+                    <img class="image-center2 image-resize" src="images/baby/milk.png">
+                </div>
+                <div data-card-height="300" class="card mb-0">
+                    <img class="image-center2 image-resize" src="images/baby/cubes.png">
+                </div>
+                
             </div>
-        </div>
+            <!-- Caroussel ends above -->    
 
-        <div class="card card-style">
-            <div class="content mb-4">
-                <h1 class="text-center mb-0">Care & Quality</h1>
-                <p class="text-center color-highlight font-11 mt-n1 pb-0">No stone left unturned, no aspect overlooked.</p>
-                <p class="text-center font-20 mt-n2">
-                    <i class="fa fa-star color-yellow1-dark"></i>
-                    <i class="fa fa-star color-yellow1-dark"></i>
-                    <i class="fa fa-star color-yellow1-dark"></i>
-                    <i class="fa fa-star color-yellow1-dark"></i>
-                    <i class="fa fa-star color-yellow1-dark"></i>
-                </p>
-                <div class="single-slider slider-boxed owl-carousel owl-no-dots">
-                    <h2 class="text-center font-300 line-height-xl content mb-0 mt-0">
-                        The code is always great with any Enabled template, the customer support that wins me over always.
-                    </h2>
-                    <h2 class="text-center font-300 line-height-xl content mb-0 mt-0">
-                        The best support I have ever had, it's so good I purchased another theme. Highlighy Recommended.
-                    </h2>
-                </div>          
-                <a href="#" class="btn btn-m btn-center-l text-uppercase font-900 bg-red2-dark rounded-sm shadow-xl mt-4 mb-0">More Testimonials</a>
-            </div>
-        </div>
+            <div>
+                <h4 class="text-center over-btn-text-margin color-black-light">Get baby's things together!</h4>
+                
+                <!--log-in button-->
+                <a href="#" data-menu="menu-signin" class="btn btn-m mb-3 rounded-sm text-uppercase font-900 border-nicebrown-dark bg-nicepink-light btn-center-m over-btn-text-margin"> 
+                    <span>Login</span>                    
+                  </a>
+                <!--sign-up button-->
+                  <a href="#" data-menu="menu-signup" class="btn btn-m mb-3 rounded-sm text-uppercase font-900 border-nicepink-dark color-nicepink-dark btn-center-m between-vert-btn-margin"> 
+                   <span>Sign-up</span>                    
+                  </a>   
 
-        <div class="double-slider owl-carousel owl-no-dots">
-            <div class="item">
-                <div data-card-height="180" class="card rounded-m shadow-l bg-18">
-                    <div class="card-top ml-3 mt-3">
-                        <i class="fa fa-bolt fa-4x color-red2-dark"></i>
-                    </div>
-                    <div class="card-bottom ml-3">
-                        <h2 class="color-white font-900 mb-0">Performance</h2>
-                        <p class="color-white font-11 mt-n1 mb-2">Fast and feature filled</p>
-                    </div>
-                    <div class="card-overlay bg-black opacity-80"></div>
-                </div>
-            </div>
-            <div class="item">
-                <div data-card-height="180" class="card rounded-m shadow-l bg-14">
-                    <div class="card-top ml-3 mt-3">
-                        <i class="fa fa-trophy fa-4x color-blue2-dark"></i>
-                    </div>
-                    <div class="card-bottom ml-3">
-                        <h2 class="color-white font-900 mb-0">Elite Care</h2>
-                        <p class="color-white font-11 mt-n1 mb-2">Built by the Best for You</p>
-                    </div>
-                    <div class="card-overlay bg-black opacity-80"></div>
-                </div>
-            </div>
-            <div class="item">
-                <div data-card-height="180" class="card rounded-m shadow-l bg-3">
-                    <div class="card-top ml-3 mt-3">
-                        <i class="fa fa-star fa-4x color-yellow1-dark"></i>
-                    </div>
-                    <div class="card-bottom ml-3">
-                        <h2 class="color-white font-900 mb-0">Quality</h2>
-                        <p class="color-white font-11 mt-n1 mb-2">Built with Care and Detail</p>
-                    </div>
-                    <div class="card-overlay bg-black opacity-80"></div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="card card-style">
-            <div class="content mt-0 mb-0">
-                <div class="list-group list-custom-large">
-                    <a href="#" data-toggle-theme data-trigger-switch="switch-4" class="border-0">
-                        <i class="fa font-12 fa-moon rounded-s bg-highlight color-white mr-3"></i>
-                        <span class="font-600">Dark Mode</span>
-                        <strong>Sticky will Remember</strong>
-                        <div class="custom-control scale-switch ios-switch">
-                            <input data-toggle-theme-switch type="checkbox" class="ios-input" id="switch-4">
-                            <label class="custom-control-label" for="switch-4"></label>
-                        </div>
-                        <i class="fa fa-angle-right"></i>
-                    </a>    
-                </div>
-            </div>
-        </div>
+            <div>
+                <!--other actions-->
+                <a href="#" data-menu="menu-share-thumbs" class=" btn btn-m margin-below-loginbtn rounded-sm text-uppercase font-400 border-white-dark color-nicebrown-dark btn-center-m">
+                    <i class="fa fa-arrow-down font-17"></i>
+                    <span>Install app</span>
+                </a>
+                <a href="#" data-menu="menu-share-thumbs" class=" btn btn-m  margin-below-sharebtn rounded-sm text-uppercase font-400 border-white-dark color-nicebrown-dark btn-center-m">
+                    <i class="fa fa-share-alt color-nicebrown-dark font-17"></i>
+                    <span>Share</span>
+                </a>
 
-        <div class="card card-style">
-            <div class="content mb-0">
-                <h1 class="text-center mb-0">Get Sticky Today</h1>
-                <p class="text-center color-highlight font-11 mt-n1 pb-0">Tons of Awesome Features just for You.</p>
-                <p class="boxed-text-xl mt-n3">
-                    Fast, easy to use and filled with features. Get Sticky Today and give your site the Mobile Feeling it deserves.
-                </p>
-                <a href="#" class="btn btn-m btn-center-l text-uppercase font-900 bg-red2-dark rounded-sm shadow-xl mb-4">Purchase Now - $25</a>
             </div>
-        </div>
-        
-        <div class="footer card card-style">
-            <a href="#" class="footer-title"><span class="color-highlight">StickyMobile</span></a>
-            <p class="footer-text"><span>Made with <i class="fa fa-heart color-highlight font-16 pl-2 pr-2"></i> by Enabled</span><br><br>Powered by the best Mobile Website Developer on Envato Market. Elite Quality. Elite Products.</p>
-            <div class="text-center mb-3">
-                <a href="#" class="icon icon-xs rounded-sm shadow-l mr-1 bg-facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" class="icon icon-xs rounded-sm shadow-l mr-1 bg-twitter"><i class="fab fa-twitter"></i></a>
-                <a href="#" class="icon icon-xs rounded-sm shadow-l mr-1 bg-phone"><i class="fa fa-phone"></i></a>
-                <a href="#" data-menu="menu-share" class="icon icon-xs rounded-sm mr-1 shadow-l bg-red2-dark"><i class="fa fa-share-alt"></i></a>
-                <a href="#" class="back-to-top icon icon-xs rounded-sm shadow-l bg-dark1-light"><i class="fa fa-angle-up"></i></a>
             </div>
-            <p class="footer-copyright">Copyright &copy; Enabled <span id="copyright-year">2017</span>. All Rights Reserved.</p>
-            <p class="footer-links"><a href="#" class="color-highlight">Privacy Policy</a> | <a href="#" class="color-highlight">Terms and Conditions</a> | <a href="#" class="back-to-top color-highlight"> Back to Top</a></p>
-            <div class="clear"></div>
+
+            </div>               
         </div>  
-    
-    </div>
-    <!-- End of Page Content--> 
-    <!-- All Menus, Action Sheets, Modals, Notifications, Toasts, Snackbars get Placed outside the <div class="page-content"> -->
-    <div id="menu-settings" class="menu menu-box-bottom menu-box-detached rounded-m" data-menu-height="308">
-        <div class="menu-title"><h1>Settings</h1><p class="color-highlight">Flexible and Easy to Use</p><a href="#" class="close-menu"><i class="fa fa-times"></i></a></div>
-        <div class="divider divider-margins mb-n2"></div>
-        <div class="content">
-            <div class="list-group list-custom-small">
-                <a href="#" data-toggle-theme data-trigger-switch="switch-dark-mode" class="pb-2 ml-n1">
-                    <i class="fa font-12 fa-moon rounded-s bg-highlight color-white mr-3"></i>
-                    <span>Dark Mode</span>
-                    <div class="custom-control scale-switch ios-switch">
-                        <input data-toggle-theme-switch type="checkbox" class="ios-input" id="switch-dark-mode">
-                        <label class="custom-control-label" for="switch-dark-mode"></label>
-                    </div>
-                    <i class="fa fa-angle-right"></i>
-                </a>    
-            </div>
-            <div class="list-group list-custom-large">
-                <a data-menu="menu-highlights" href="#">
-                    <i class="fa font-14 fa-tint bg-green1-dark rounded-s"></i>
-                    <span>Page Highlight</span>
-                    <strong>16 Colors Highlights Included</strong>
-                    <span class="badge bg-highlight color-white">HOT</span>
-                    <i class="fa fa-angle-right"></i>
-                </a>        
-                <a data-menu="menu-backgrounds" href="#" class="border-0">
-                    <i class="fa font-14 fa-cog bg-blue2-dark rounded-s"></i>
-                    <span>Background Color</span>
-                    <strong>10 Page Gradients Included</strong>
-                    <span class="badge bg-highlight color-white">NEW</span>
-                    <i class="fa fa-angle-right"></i>
-                </a>        
-            </div>
-        </div>
-    </div>
-    <!-- Menu Settings Highlights-->
-    <div id="menu-highlights" class="menu menu-box-bottom menu-box-detached rounded-m" data-menu-height="380" data-menu-effect="menu-over">
-        <div class="menu-title"><h1>Highlights</h1><p class="color-highlight">Any Element can have a Highlight Color</p><a href="#" class="close-menu"><i class="fa fa-times"></i></a></div>
-        <div class="divider divider-margins mb-n2"></div>
-        <div class="content">
-            <div class="highlight-changer">
-                <a href="#" data-change-highlight="blue2"><i class="fa fa-circle color-blue2-dark"></i><span class="color-blue2-light">Default</span></a>
-                <a href="#" data-change-highlight="red2"><i class="fa fa-circle color-red1-dark"></i><span class="color-red2-light">Red</span></a>    
-                <a href="#" data-change-highlight="orange"><i class="fa fa-circle color-orange-dark"></i><span class="color-orange-light">Orange</span></a>    
-                <a href="#" data-change-highlight="pink2"><i class="fa fa-circle color-pink2-dark"></i><span class="color-pink2-light">Pink</span></a>    
-                <a href="#" data-change-highlight="magenta2"><i class="fa fa-circle color-magenta2-dark"></i><span class="color-magenta2-light">Purple</span></a>    
-                <a href="#" data-change-highlight="aqua"><i class="fa fa-circle color-aqua-dark"></i><span class="color-aqua-light">Aqua</span></a>      
-                <a href="#" data-change-highlight="teal"><i class="fa fa-circle color-teal-dark"></i><span class="color-teal-light">Teal</span></a>      
-                <a href="#" data-change-highlight="mint"><i class="fa fa-circle color-mint-dark"></i><span class="color-mint-light">Mint</span></a>      
-                <a href="#" data-change-highlight="green2"><i class="fa fa-circle color-green2-dark"></i><span class="color-green2-light">Green</span></a>    
-                <a href="#" data-change-highlight="green1"><i class="fa fa-circle color-green1-dark"></i><span class="color-green1-light">Grass</span></a>       
-                <a href="#" data-change-highlight="yellow2"><i class="fa fa-circle color-yellow2-dark"></i><span class="color-yellow2-light">Sunny</span></a>    
-                <a href="#" data-change-highlight="yellow1"><i class="fa fa-circle color-yellow1-dark"></i><span class="color-yellow1-light">Goldish</span></a>
-                <a href="#" data-change-highlight="brown1"><i class="fa fa-circle color-brown1-dark"></i><span class="color-brown1-light">Wood</span></a>    
-                <a href="#" data-change-highlight="dark1"><i class="fa fa-circle color-dark1-dark"></i><span class="color-dark1-light">Night</span></a>
-                <a href="#" data-change-highlight="dark2"><i class="fa fa-circle color-dark2-dark"></i><span class="color-dark2-light">Dark</span></a>
-                <div class="clearfix"></div>
-            </div>
-            <a href="#" data-menu="menu-settings" class="btn btn-full btn-m rounded-sm bg-highlight shadow-xl text-uppercase font-900 mt-4">Back to Settings</a>
-        </div>
     </div>    
-    <!-- Menu Settings Backgrounds-->
-    <div id="menu-backgrounds" class="menu menu-box-bottom menu-box-detached rounded-m" data-menu-height="310" data-menu-effect="menu-over">
-        <div class="menu-title"><h1>Backgrounds</h1><p class="color-highlight">Change Page Color Behind Content Boxes</p><a href="#" class="close-menu"><i class="fa fa-times"></i></a></div>
-        <div class="divider divider-margins mb-n2"></div>
-        <div class="content">
-            <div class="background-changer">
-                <a href="#" data-change-background="none"><i class="bg-theme"></i><span>Default</span></a>
-                <a href="#" data-change-background="plum"><i class="body-plum"></i><span class="color-plum-dark">Plum</span></a>
-                <a href="#" data-change-background="magenta3"><i class="body-magenta3"></i><span class="color-magenta3-dark">Magenta</span></a>
-                <a href="#" data-change-background="dark3"><i class="body-dark3"></i><span class="color-dark3-dark">Dark</span></a>
-                <a href="#" data-change-background="violet"><i class="body-violet"></i><span class="color-violet-dark">Violet</span></a>
-                <a href="#" data-change-background="red3"><i class="body-red3"></i><span class="color-red3-dark">Red</span></a>
-                <a href="#" data-change-background="green3"><i class="body-green3"></i><span class="color-green3-dark">Green</span></a>
-                <a href="#" data-change-background="sky"><i class="body-sky"></i><span class="color-sky-dark">Sky</span></a>
-                <a href="#" data-change-background="pumpkin"><i class="body-pumpkin"></i><span class="color-pumpkin-dark">Orange</span></a>
-                <a href="#" data-change-background="yellow3"><i class="body-yellow3"></i><span class="color-yellow3-dark">Yellow</span></a>
-                <div class="clearfix"></div>
-            </div>
-            <a href="#" data-menu="menu-settings" class="btn btn-full btn-m rounded-sm bg-highlight shadow-xl text-uppercase font-900 mt-4">Back to Settings</a>
-        </div>
-    </div>
-    <!-- Menu Share -->
-    <div id="menu-share" class="menu menu-box-bottom menu-box-detached rounded-m" data-menu-height="345" data-menu-effect="menu-over">
-        <div class="menu-title mt-n1"><h1>Share the Love</h1><p class="color-highlight">Just Tap the Social Icon. We'll add the Link</p><a href="#" class="close-menu"><i class="fa fa-times"></i></a></div>
-        <div class="content mb-0">
-            <div class="divider mb-0"></div>
-            <div class="list-group list-custom-small list-icon-0">
-                <a href="#" class="shareToFacebook">
-                    <i class="font-18 fab fa-facebook color-facebook"></i>
-                    <span class="font-13">Facebook</span>
-                    <i class="fa fa-angle-right"></i>
-                </a>
-                <a href="#" class="shareToTwitter">
-                    <i class="font-18 fab fa-twitter-square color-twitter"></i>
-                    <span class="font-13">Twitter</span>
-                    <i class="fa fa-angle-right"></i>
-                </a>
-                <a href="#" class="shareToLinkedIn">
-                    <i class="font-18 fab fa-linkedin color-linkedin"></i>
-                    <span class="font-13">LinkedIn</span>
-                    <i class="fa fa-angle-right"></i>
-                </a>        
-                <a href="#" class="shareToWhatsApp">
-                    <i class="font-18 fab fa-whatsapp-square color-whatsapp"></i>
-                    <span class="font-13">WhatsApp</span>
-                    <i class="fa fa-angle-right"></i>
-                </a>   
-                <a href="#" class="shareToMail border-0">
-                    <i class="font-18 fa fa-envelope-square color-mail"></i>
-                    <span class="font-13">Email</span>
-                    <i class="fa fa-angle-right"></i>
-                </a>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Be sure this is on your main visiting page, for example, the index.html page-->
-    <!-- Install Prompt for Android -->
-    <div id="menu-install-pwa-android" class="menu menu-box-bottom menu-box-detached rounded-l"
-         data-menu-height="350" 
-        data-menu-effect="menu-parallax">
-        <div class="boxed-text-l mt-4">
-            <img class="rounded-l mb-3" src="app/icons/icon-128x128.png" alt="img" width="90">
-            <h4 class="mt-3">Add Sticky on your Home Screen</h4>
-            <p>
-                Install Sticky on your home screen, and access it just like a regular app. It really is that simple!
-            </p>
-            <a href="#" class="pwa-install btn btn-s rounded-s shadow-l text-uppercase font-900 bg-highlight mb-2">Add to Home Screen</a><br>
-            <a href="#" class="pwa-dismiss close-menu color-gray2-light text-uppercase font-900 opacity-60 font-10">Maybe later</a>
-            <div class="clear"></div>
-        </div>
-    </div>   
+    <!--INTROPAGE ENDS HERE-->
 
-    <!-- Install instructions for iOS -->
-    <div id="menu-install-pwa-ios" 
-        class="menu menu-box-bottom menu-box-detached rounded-l"
-         data-menu-height="320" 
-        data-menu-effect="menu-parallax">
-        <div class="boxed-text-xl mt-4">
-            <img class="rounded-l mb-3" src="app/icons/icon-128x128.png" alt="img" width="90">
-            <h4 class="mt-3">Add Sticky on your Home Screen</h4>
-            <p class="mb-0 pb-0">
-                Install Sticky on your home screen, and access it just like a regular app.  Open your Safari menu and tap "Add to Home Screen".
-            </p>
-            <div class="clear"></div>
-            <a href="#" class="pwa-dismiss close-menu color-highlight uppercase ultrabold opacity-80 top-25">Maybe later</a>
-            <i class="fa-ios-arrow fa fa-caret-down font-40"></i>
+
+    <!--APPMAIN STARTS HERE-->
+
+    <div class="page-content header-clear-medium invisible" id="appmain">
+        <div class="card full-page-card">
+            <div class="content">
+
+                <div class="card" id="colored-collapse">
+                    <div class="content">
+                        <h4 class="bolder">Colored Collapse</h4>
+                        <p>
+                            Simple link list that can get tapped to reveal more content. We used links in our example, you can use anything you want.
+                        </p>
+                    </div>    
+                </div>
+<form id="testForm">
+<input type="text" id="itemNameField">
+<button type="submit" id="testBtn">DB Test</button>
+</form>
+                <!--COLLAPSE LISTS STARTS-->
+                <div class="card card-style mb-3">
+                    <div class="list-group list-custom-small list-icon-0 bg-green1-dark pl-3 pr-4">
+                        <a data-toggle="collapse" href="#collapse-5">
+                            
+                            <i class="fa font-22 fa-snowman"></i> 
+                            <span class="font-22 color-white">Playground session</span>
+                            <i class="fa font-22 fa-angle-down"></i>
+                        </a>        
+                    </div>
+                    <div class="collapse pl-2 pr-4" id="collapse-5">
+                        
+                        <!--
+                            <div class="input-style input-style-2 input-required list-item-margin">
+                            <span class="color-highlight">Add new item</span>
+                            <em>(required)</em>
+                            <input class="form-control" type="email" placeholder="">
+                            <a href="#" class="btn btn-m btn-full mb-3 rounded-0 text-uppercase font-900 shadow-s bg-red2-light">Button</a>
+                        </div>
+                        --> 
+
+                        <!--LIST START-->
+                        <div class="fac fac-checkbox fac-blue list-item-margin"><span></span>
+                            <input id="box1-fac-checkbox" type="checkbox" value="0" checked>
+                            <label for="box1-fac-checkbox">Simple</label>
+                            <button type="submit" class="icon-button fa font-22 fa-times float-right color-nicepink-light"></button>   
+                            </div>
+                        <div class="divider divider-margins"></div>                        
+                        <div class="fac fac-checkbox fac-blue list-item-margin"><span></span>
+                            <input id="box2-fac-checkbox" type="checkbox" value="0" checked>
+                            <label for="box2-fac-checkbox">Primary</label>
+                        </div>
+                        <div class="divider divider-margins"></div>   
+                        <div class="fac fac-checkbox fac-green list-item-margin"><span></span>
+                            <input id="box3-fac-checkbox" type="checkbox" value="0">
+                            <label for="box3-fac-checkbox">Success</label>
+                        </div>
+                        <div class="divider divider-margins"></div>   
+                        <div class="fac fac-checkbox fac-orange list-item-margin"><span></span>
+                            <input id="box5-fac-checkbox" type="checkbox" value="0">
+                            <label for="box5-fac-checkbox">Warning</label>
+                        </div>
+                        <div class="divider divider-margins"></div>   
+                        <div class="fac fac-checkbox fac-red list-item-margin" style="margin-bottom: 2vh;"><span></span>
+                            <input id="box6-fac-checkbox" type="checkbox" value="0">
+                            <label for="box6-fac-checkbox">Danger</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card card-style mb-3">
+                    <div class="list-group list-custom-small list-icon-0 bg-red2-dark pl-3 pr-4">
+                        <a data-toggle="collapse" href="#collapse-6">
+                            <i class="fa font-14 fa-share-alt"></i>
+                            <span class="font-14 color-white">Daytrip</span>
+                            <i class="fa fa-angle-down"></i>
+                        </a>        
+                    </div>
+                    <div class="collapse pl-2 pr-4" id="collapse-6">
+                        <div class="list-group list-custom-small">
+                            <a href="#">
+                                <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+                                <label for="vehicle1"> I have a bike</label>
+                            </a>        
+                            <a href="#">
+                                <i class="fac fac-radio fac-red"></i>
+                                <span>Twitter</span>
+                                <i class="fa fa-angle-right"></i>
+                            </a>        
+                            <a href="#" class="border-0">
+                                <i class="fab font-13 fa-linkedin color-linkedin"></i>
+                                <span>Linkedin</span>
+                                <i class="fa fa-angle-right"></i>
+                            </a>        
+                        </div>
+                    </div>
+                </div>        
+                
+                <div class="card card-style mb-3">
+                    <div class="list-group list-custom-small list-icon-0 bg-blue2-dark pl-3 pr-4">
+                        <a data-toggle="collapse" href="#collapse-7">
+                            <i class="fa font-14 fa-envelope"></i>
+                            <span class="font-14 color-white">Vacation</span>
+                            <i class="fa fa-angle-down"></i>
+                        </a>        
+                    </div>
+                    <div class="collapse pl-2 pr-4" id="collapse-7">
+                        <div class="list-group list-custom-small">
+                            <a href="#">
+                                <i class="fa font-13 fa-home color-green1-dark"></i>
+                                <span>home@domain.com</span>
+                                <i class="fa fa-angle-right"></i>
+                            </a>        
+                            <a href="#">
+                                <i class="fa font-13 fa-suitcase color-brown1-light"></i>
+                                <span>business@domain.com</span>
+                                <i class="fa fa-angle-right"></i>
+                            </a>        
+                            <a href="#" class="border-0">
+                                <i class="fa font-13 fa-building color-gray2-dark"></i>
+                                <span>office@domain.com</span>
+                                <i class="fa fa-angle-right"></i>
+                            </a>        
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card card-style">
+                    <div class="list-group list-custom-small list-icon-0 bg-blue2-dark pl-3 pr-4">
+                        <a data-toggle="collapse" href="#collapse-7">
+                            <i class="fa font-14 fa-envelope"></i>
+                            <span class="font-14 color-white">Custom list</span>
+                            <i class="fa fa-angle-down"></i>
+                        </a>        
+                    </div>
+                    <div class="collapse pl-2 pr-4" id="collapse-7">
+                        <div class="list-group list-custom-small">
+                            <a href="#">
+                                <i class="fa font-13 fa-home color-green1-dark"></i>
+                                <span>home@domain.com</span>
+                                <i class="fa fa-angle-right"></i>
+                            </a>        
+                            <a href="#">
+                                <i class="fa font-13 fa-suitcase color-brown1-light"></i>
+                                <span>business@domain.com</span>
+                                <i class="fa fa-angle-right"></i>
+                            </a>        
+                            <a href="#" class="border-0">
+                                <i class="fa font-13 fa-building color-gray2-dark"></i>
+                                <span>office@domain.com</span>
+                                <i class="fa fa-angle-right"></i>
+                            </a>        
+                        </div>
+                    </div>
+                </div>
+                <!--COLLAPSE LISTS END-->
+
+            </div>
         </div>
     </div>
+
+    <!--APPMAIN ENDS HERE-->
+
+
+
+
+
+
+
+    <!--end of page content, off canvas elements here-->
     
-</div>
+    
+
+
+    <!-- All Menus, Action Sheets, Modals, Notifications, Toasts get Placed outside the <div class="page-content"> -->
+    
+
+        <!--SIGN-IN FORM-->
+        <div id="menu-signin" class="menu menu-box-modal rounded-m invisible" 
+         data-menu-height="310" 
+         data-menu-width="310">
+        <form id="login-form">
+        <div class="mr-3 ml-3 mt-3">
+            <h1 class="text-uppercase font-900 mb-0">LOGIN</h1>
+            <p class="font-11  mt-n1 mb-0">
+                Hello, stranger! Please enter your credentials below.
+            </p>
+
+            <div class="input-style has-icon input-style-1 input-required">
+                <i class="input-icon fa fa-user font-11"></i>
+                <span>Email</span>
+                <em>(required)</em>
+                <input type="email" placeholder="Email" id="login-email">
+            </div> 
+            <div class="input-style has-icon input-style-1 input-required">
+                <i class="input-icon fa fa-lock font-11"></i>
+                <span>Password</span>
+                <em>(required)</em>
+                <input type="password" placeholder="Password" id="login-password">
+            </div>   
+            <div class="row">
+                <div class="col-6">
+                    <a href="#" data-menu="menu-forgot" class="font-10">Forgot Password?</a>
+                </div>
+                <div class="col-6">
+                    <a data-menu="menu-signup" href="#" class="float-right font-10">Create Account</a>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <button href="#" class="btn btn-full btn-m shadow-l rounded-s text-uppercase font-900 bg-nicepink-dark mt-4">LOGIN</button>
+        </div>
+        </form>
+    </div>     
+    <!--SIGN-IN FORM ENDS-->    
+
+    <!--SIGN-UP FORM-->    
+    <div id="menu-signup" class="menu menu-box-modal rounded-m"
+    data-menu-height="360" 
+    data-menu-width="310">
+    <form id="signup-form">
+    <div class="mr-3 ml-3 mt-3">
+       <h1 class="text-uppercase font-900 mb-0">Register</h1>
+       <p class="font-11  mt-n1 mb-0">
+           Don't have an account? Register below.
+       </p>
+
+       <div class="input-style has-icon input-style-1 input-required">
+           <i class="input-icon fa fa-user font-11"></i>
+           <span>Username</span>
+           <em>(required)</em>
+           <input type="name" placeholder="Username">
+       </div> 
+       <div class="input-style has-icon input-style-1 input-required">
+           <i class="input-icon fa fa-at"></i>
+           <span>Email</span>
+           <em>(required)</em>
+           <input type="email" placeholder="Email" id="signup-email">
+       </div>         
+       <div class="input-style has-icon input-style-1 input-required">
+           <i class="input-icon fa fa-lock font-11"></i>
+           <span>Password</span>
+           <em>(required)</em>
+           <input type="password" placeholder="Choose a Password" id="signup-password">
+       </div>        
+       <p class="text-center pb-0 mb-n1 pt-1">
+           <a href="#" data-menu="menu-signin" class="text-center font-11 color-gray2-dark">Already Registered? Sign In Here.</a>
+       </p>
+       <button href="#" class="btn btn-full btn-m shadow-l rounded-s text-uppercase font-900 bg-nicebrown-dark mt-4">Register</button>
+    </div>
+    </form>
+    </div>   
+    <!--SIGN-UP FORM ENDS-->    
+
+
+
+
+<!--SHARE MENU STARTS HERE-->
+
+<div id="menu-share-thumbs" 
+         class="menu menu-box-bottom menu-box-detached rounded-m" 
+         data-menu-height="420" 
+         data-menu-effect="menu-over">
+        <h1 class="text-center text-uppercase font-900 mt-3 pt-2">Share the Love</h1>
+        <p class="boxed-text-xl under-heading">
+            Share our page with the world, increase <br>
+            your page exposure with the world.
+        </p>
+        <div class="divider divider-margins"></div>
+        
+        <div class="row text-center mr-4 ml-4 mb-0">
+            <div class="col-4 mb-n2">
+                <a href="#" class="icon icon-l bg-facebook rounded-s shadow-l"><i class="fab fa-facebook-f font-22"></i><br></a>
+                <p class="font-11 opacity-70">Facebook</p>
+            </div>
+            <div class="col-4 mb-n2">
+                <a href="#" class="icon icon-l bg-twitter rounded-s shadow-l"><i class="fab fa-twitter font-22"></i><br></a>
+                <p class="font-11 opacity-70">Twitter</p>
+            </div>
+            <div class="col-4 mb-n2">
+                <a href="#" class="icon icon-l bg-linkedin rounded-s shadow-l"><i class="fab fa-linkedin-in font-22"></i><br></a>
+                <p class="font-11 opacity-70">LinkedIn</p>
+            </div>
+            <div class="col-4 mb-n2">
+                <a href="#" class="icon icon-l bg-mail rounded-s shadow-l"><i class="fa fa-envelope font-22"></i><br></a>
+                <p class="font-11 opacity-70">Email</p>
+            </div>
+            <div class="col-4 mb-n2">
+                <a href="#" class="icon icon-l bg-whatsapp rounded-s shadow-l"><i class="fab fa-whatsapp font-22"></i><br></a>
+                <p class="font-11 opacity-70">WhatsApp</p>
+            </div>
+            <div class="col-4 mb-n2">
+                <a href="#" class="close-menu icon icon-l bg-red2-dark rounded-s shadow-l"><i class="fa fa-arrow-down font-22"></i><br></a>
+                <p class="font-11 opacity-70">Close</p>
+            </div>
+        </div>
+
+        <div class="divider divider-margins mt-n1 mb-3"></div>
+        <p class="text-center font-10 mb-0">Copyright <span class="copyright-year"></span> - Enabled. All rights reserved.</p>
+    </div>
+    
+
+
+<!--LOGOUT STARTS HERE-->
+
+    <div id="menu-confirm" class="menu menu-box-modal rounded-m" 
+         data-menu-height="200" 
+         data-menu-width="330">
+        <h1 class="text-center mt-3 pb-1" id="usermsg"></h1>
+        <p class="boxed-text-l">
+            Do you want to log-out?
+        </p>
+        <div class="row mr-3 ml-3 mb-0">
+            <div class="col-6">
+                <a href="#" class="close-menu btn btn-sm btn-full button-s shadow-l rounded-s text-uppercase font-900 bg-green1-dark" id="logout">Yes</a>
+            </div>
+            <div class="col-6">
+                <a href="#" class="close-menu btn btn-sm btn-full button-s shadow-l rounded-s text-uppercase font-900 bg-red1-dark">Cancel</a>
+            </div>
+        </div>
+    </div> 
+
+
+    <!--end of div id page-->
+</div>    
+
+
 <script type="text/javascript" src="scripts/jquery.js"></script>
 <script type="text/javascript" src="scripts/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll@15/dist/smooth-scroll.polyfills.min.js"></script>    
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.15.1/firebase-app.js"></script>
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries OK -->
+     <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-auth.js"></script>
+     <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-firestore.js"></script>
+     <script src="https://www.gstatic.com/firebasejs/7.15.1/firebase-analytics.js"></script>
+     <script src="https://kit.fontawesome.com/455137684d.js" crossorigin="anonymous"></script>
 <script type="text/javascript" src="scripts/custom.js"></script>
 </body>
