@@ -89,9 +89,12 @@ $(document).ready(function(){
     /// User variable, value will come from login function below
     var userId;
     
-    
+
     ///REDIRECT USER FROM INDEX TO APPMAIN IF LOGGEDIN
 
+
+
+    const checkedIfSignedIn = () => {
     auth.onAuthStateChanged(function(user) {
         if (user) {
             //assign user ID to variable above
@@ -116,8 +119,9 @@ $(document).ready(function(){
             console.log('no user is logged-in')
             }
     });
+    };
 
-
+    checkedIfSignedIn();
 
     //// LOGIN
 
