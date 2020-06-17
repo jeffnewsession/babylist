@@ -6105,3 +6105,11 @@ display:inline-block;
   float: right;
 }
 
+.list-item-margin {
+  margin-top: 1vh;
+}
+
+.invisible {
+  display: none;
+  visibility: hidden;
+}
