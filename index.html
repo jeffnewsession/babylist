@@ -29,7 +29,11 @@ href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"
     <!-- header and footer bar go here-->
     <div class="header header-fixed header-logo-center">
         <a href="http://127.0.0.1:5500/index.html" class="header-title"><span>babyList</span></a>
+        <a href="#" class="header-icon header-icon-4 invisible" data-menu="menu-confirm" id="profileBtn">
+            <i class="fas fa-user-alt color-nicepink-light" id="usernamedisplay"></i>
+          </a>
     </div>
+
     <!--
     <div id="footer-bar" class="footer-bar-1">
         <a href="index.html"><i class="fa fa-home"></i><span>Home</span></a>
@@ -42,7 +46,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"
 
     <!--INTROPAGE STARTS HERE-->
     
-    <div class="page-content header-clear-medium" id="intropage">
+    <div class="page-content header-clear-medium invisible" id="intropage">
 
         
         <div class="card full-page-card">
@@ -393,7 +397,24 @@ href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"
     
 
 
+<!--LOGOUT STARTS HERE-->
 
+    <div id="menu-confirm" class="menu menu-box-modal rounded-m" 
+         data-menu-height="200" 
+         data-menu-width="330">
+        <h1 class="text-center mt-3 pb-1" id="usermsg"></h1>
+        <p class="boxed-text-l">
+            Do you want to log-out?
+        </p>
+        <div class="row mr-3 ml-3 mb-0">
+            <div class="col-6">
+                <a href="#" class="close-menu btn btn-sm btn-full button-s shadow-l rounded-s text-uppercase font-900 bg-green1-dark" id="logout">Yes</a>
+            </div>
+            <div class="col-6">
+                <a href="#" class="close-menu btn btn-sm btn-full button-s shadow-l rounded-s text-uppercase font-900 bg-red1-dark">Cancel</a>
+            </div>
+        </div>
+    </div> 
 
 
     <!--end of div id page-->
