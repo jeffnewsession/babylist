@@ -2233,13 +2233,13 @@ img.mx-auto {
 .divider {
   height: 1px;
   display: block;
-  background-color: rgba(0, 0, 0, 0.160);
-  margin-bottom: 30px;
+  background-color: rgba(0, 0, 0, 0.3);
+  margin-bottom: 0px;
 }
 /* customtrack i have changed the opacity */
 
 .divider-margins {
-  margin: 4px 0px 0px 0px;
+  margin: 2px 0px 1px 0px;
 }
 /* customtrack i have changed these values */
 
@@ -2521,6 +2521,8 @@ img.mx-auto {
   opacity: 0;
 }
 
+
+
 .fac-checkbox-round > span::after {
   content: "\f111";
 }
@@ -2528,9 +2530,12 @@ img.mx-auto {
 .fac-checkbox-round > input[type=checkbox] + label:before {
   content: "\f00c";
   color: #FFF !important;
-  font-size: 8px !important;
+  font-size: 16px !important;
   padding-left: 3px;
 }
+/* customtrack changed font-size to 16px from 8px */
+
+
 
 .fac-radio > input + label:before {
   opacity: 0;
@@ -2605,6 +2610,38 @@ img.mx-auto {
 
 .fac-red > span::after {
   color: #ED5565;
+}
+
+.fac-nicepink > input + label:before {
+  color: #ee4860;
+}
+
+.fac-nicepink > span::after {
+  color: #ee4860;
+}
+
+.fac-nicebrown > input + label:before {
+  color: #e7a760;
+}
+
+.fac-nicebrown > span::after {
+  color: #e7a760;
+}
+
+.fac-niceblue > input + label:before {
+  color: #637f87;
+}
+
+.fac-niceblue > span::after {
+  color: #637f87;
+}
+
+.fac-pastelgreen > input + label:before {
+  color: #c4bda1;
+}
+
+.fac-pastelgreen > span::after {
+  color: #c4bda1;
 }
 
 .fac-radio-full > span::after {
@@ -6111,7 +6148,7 @@ display:inline-block;
 }
 
 .list-item-margin {
-  margin-top: 3vh;
+  margin-top: 2vh;
 }
 
 .invisible {
@@ -6122,4 +6159,43 @@ display:inline-block;
 .icon-button {
   border-width: 0px;
   background: rgba(139, 139, 139, 0);
+}
+
+.animate__animated.animate__zoomOut {
+  --animate-duration: 10s;
+}
+
+@keyframes checked {
+  0%   {left:0px;}
+  100% {left:0px; font-size: 15px; opacity: 0.7;}
+}
+
+/* The element to apply the animation to */
+.checkedanimation {
+  animation-name: checked;
+  animation-duration: 0.1s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+.linethrough {
+  text-decoration: line-through;
+}
+
+.dividersolid {
+  border-top: 1px solid #bbb;
+  margin-top: 5px;
+  margin-bottom: 3px;
+}
+
+:checked {
+  text-decoration: line-through;
+}
+
+.ischecked {
+  text-decoration: line-through;
+}
+
+.emptyclass {
+  
 }
