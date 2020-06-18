@@ -139,36 +139,42 @@ href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"
                     <div class="collapse pl-2 pr-4" id="collapse-5">
 
                         <!--LIST START-->
-                        <div class="fac fac-checkbox fac-blue list-item-margin"><span></span>
-                            <input id="box1-fac-checkbox" type="checkbox" value="0" checked>
-                            <label for="box1-fac-checkbox">Simple</label>
-                            <button type="submit" class="icon-button fa font-22 fa-times float-right color-nicepink-light"></button>   
+                        <div class="linethrough fac fac-checkbox-round fac-nicepink list-item-margin"><span></span>
+                        <input class="emptyclass" id="box1-fac-checkbox" type="checkbox" value="0" onclick="if(this.checked){this.parentElement.classList.add('checkedanimation');}else{this.parentElement.classList.remove('checkedanimation', 'linethrough')}">
+                            <label for="box1-fac-checkbox">Simple1</label>
+                            <button type="submit" class="icon-button fa font-16 fa-trash float-right color-nicepink-light"></button>   
                             </div>
-                        <div class="divider divider-margins"></div>                        
-                        <div class="fac fac-checkbox fac-blue list-item-margin"><span></span>
-                            <input id="box2-fac-checkbox" type="checkbox" value="0" checked>
-                            <label for="box2-fac-checkbox">Primary</label>
-                        </div>
-                        <div class="divider divider-margins"></div>   
-                        <div class="fac fac-checkbox fac-green list-item-margin"><span></span>
+                        <div class="dividersolid"></div>                        
+                        <div class="fac fac-checkbox-round fac-nicepink list-item-margin"><span></span>
+                            <input id="box2-fac-checkbox" type="checkbox" value="0">
+                            <label  for="box2-fac-checkbox">Simple</label>
+                            <button type="submit" class="icon-button fa font-16 fa-trash float-right color-nicepink-light"></button>   
+                            </div>
+                        <div class="dividersolid"></div>    
+                        <div class="fac fac-checkbox-round fac-nicepink list-item-margin"><span></span>
                             <input id="box3-fac-checkbox" type="checkbox" value="0">
-                            <label for="box3-fac-checkbox">Success</label>
-                        </div>
-                        <div class="divider divider-margins"></div>   
-                        <div class="fac fac-checkbox fac-orange list-item-margin"><span></span>
+                            <label  for="box3-fac-checkbox">Simple</label>
+                            <button type="submit" class="icon-button fa font-16 fa-trash float-right color-nicepink-light"></button>   
+                            </div>
+                        <div class="dividersolid"></div>    
+                        <div class="fac fac-checkbox-round fac-nicepink list-item-margin"><span></span>
+                            <input id="box4-fac-checkbox" type="checkbox" value="0">
+                            <label  for="box4-fac-checkbox">Simple</label>
+                            <button type="submit" class="icon-button fa font-16 fa-trash float-right color-nicepink-light"></button>   
+                            </div>
+                            <div class="dividersolid"></div>    
+                        <div class="fac fac-checkbox-round fac-nicepink list-item-margin"><span></span>
                             <input id="box5-fac-checkbox" type="checkbox" value="0">
-                            <label for="box5-fac-checkbox">Warning</label>
-                        </div>
-                        <div class="divider divider-margins"></div>   
-                        <div class="fac fac-checkbox fac-red list-item-margin" style="margin-bottom: 2vh;"><span></span>
-                            <input id="box6-fac-checkbox" type="checkbox" value="0">
-                            <label for="box6-fac-checkbox">Danger</label>
-                        </div>
-                        <div class="divider divider-margins"></div>   
-                        <div class="" style="margin-bottom: 2vh;"><span></span>
-        
-                            <input type="text" placeholder="Add" value='test'>
-                        </div>
+                            <label  for="box5-fac-checkbox">Simple</label>
+                            <button type="submit" class="icon-button fa font-16 fa-trash float-right color-nicepink-light"></button>   
+                            </div>
+                            <div class="dividersolid"></div>    
+                        <div class="input-style has-icon input-style-1 input-required">
+                            <i class="fac fac-checkbox fac-orange"></i>
+                            <span>Name</span>
+                            <em>(required)</em>
+                            <input type="name" placeholder="Add item">
+                        </div> 
                     </div>
                 </div>
                 
