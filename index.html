@@ -139,8 +139,8 @@ href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"
                     <div class="collapse pl-2 pr-4" id="collapse-5">
 
                         <!--LIST START-->
-                        <div class="linethrough fac fac-checkbox-round fac-nicepink list-item-margin"><span></span>
-                        <input class="emptyclass" id="box1-fac-checkbox" type="checkbox" value="0" onclick="if(this.checked){this.parentElement.classList.add('checkedanimation');}else{this.parentElement.classList.remove('checkedanimation', 'linethrough')}">
+                        <div class="fac fac-checkbox-round fac-nicepink list-item-margin"><span></span>
+                        <input id="box1-fac-checkbox" type="checkbox" value="0" onclick="if(this.checked){this.parentElement.classList.add('checkedanimation');}else{this.parentElement.classList.remove('checkedanimation', 'linethrough')}">
                             <label for="box1-fac-checkbox">Simple1</label>
                             <button type="submit" class="icon-button fa font-16 fa-trash float-right color-nicepink-light"></button>   
                             </div>
@@ -163,19 +163,17 @@ href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"
                             <button type="submit" class="icon-button fa font-16 fa-trash float-right color-nicepink-light"></button>   
                             </div>
                             <div class="dividersolid"></div>    
-                        <div class="fac fac-checkbox-round fac-nicepink list-item-margin"><span></span>
-                            <input id="box5-fac-checkbox" type="checkbox" value="0">
-                            <label  for="box5-fac-checkbox">Simple</label>
-                            <button type="submit" class="icon-button fa font-16 fa-trash float-right color-nicepink-light"></button>   
-                            </div>
-                            <div class="dividersolid"></div>    
-                        <div class="input-style has-icon input-style-1 input-required">
-                            <i class="fac fac-checkbox fac-orange"></i>
-                            <span>Name</span>
-                            <em>(required)</em>
-                            <input type="name" placeholder="Add item">
-                        </div> 
+  
+                        <div class="input-style has-icon input-style-1-custom font-22 input-required">
+                                <i class="input-icon fa fa-plus font-22 color-nicepink-light"></i>
+                                <span></span>
+                                <input class="font-22" type="text" placeholder="Add item" style="width: 80%;">
+                                <button type="submit" style="margin-top: 10px;" class="btn btn-xxs btn-full float-right mb-3 rounded text-uppercase font-900 border-nicepink-light color-white-light bg-nicepink-light">Add</button>
+                            </div> 
+ 
+
                     </div>
+                    
                 </div>
                 
                 <div class="card card-style mb-3">
