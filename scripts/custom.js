@@ -249,7 +249,7 @@ $(document).ready(function(){
             });
         });
 
-        
+
 
 
         auth.onAuthStateChanged(function(user) {
@@ -293,6 +293,7 @@ $(document).ready(function(){
             ["nicebrown","#e7a760","#e7a760","#e7a760"],
             ["nicebeige","#ffe1b1","#ffe1b1","#ffe1b1"],
             ["niceblue","#637f87","#637f87","#637f87"], 
+            ["pastelgreen","#c4bda1","#c4bda1","#c4bda1"], 
             ["magenta3","#413a65","#413a65","#2b2741"], 
             ["red3","#c62f50","#6F1025","#6F1025"], 
             ["green3","#6eb148","#2d7335","#2d7335"], 
