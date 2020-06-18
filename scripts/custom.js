@@ -18,6 +18,13 @@ $(document).ready(function(){
         
 
 
+   
+
+
+
+
+
+
         // Your web app's Firebase configuration
         var firebaseConfig = {
             apiKey: "AIzaSyAeHBmZNpesm887Uvsb3TNYtpZxqXRVQC0",
