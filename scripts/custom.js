@@ -195,18 +195,13 @@ $(document).ready(function(){
 
 
 
-         //// IF LOGED-IN...
+         //// LOG-OUT
 
 
         auth.onAuthStateChanged(function(user) {
             if (user) {
-              //document.getElementById("usernamedisplay").innerHTML = user.email;
-              //document.getElementById("usermsg").innerHTML = `Hi, ${user.email}`;
-             console.log(user.uid)
-              
 
-
-            //LOG OUT
+            //log-out function
               const logout = document.querySelector('#logout');
               logout.addEventListener('click', (e) => {
               e.preventDefault();
@@ -246,42 +241,75 @@ $(document).ready(function(){
         });
 
 
-        const testForm = document.querySelector('#testForm')
+        const addItemForm = document.querySelector('#addItemForm')
 
-        testForm.addEventListener('submit', (e) => {
+        addItemForm.addEventListener('submit', (e) => {
             e.preventDefault();
             db.collection('mainCollection').add({
-                userCustomID: userId,
-                itemName: testForm.itemNameField.value
+                userCustomID: userId, //userID variable comes from above on pageload
+                itemName: addItemForm.itemNameField.value
             });
+            //reset listItem input and blur field
+            addItemForm.itemNameField.value = '';
+            addItemForm.itemNameField.blur();
+        });
+
+        ////RENDER LIST HTML FUNCTION
+        //TODO (maybe): catch checked action in firestore to keep track of what is checked even after reload
+
+        function renderListItem(doc) {
+            const playgroundlist = document.querySelector('#playgroundlist');
+            let DIV = document.createElement('div');
+            DIV.setAttribute('id', doc.id)
+            playgroundlist.appendChild(DIV)
+            document.getElementById(doc.id).innerHTML = 
+            '<span></span>'
+            +'<input id="' + doc.id + 'box" type="checkbox" value="0" onclick="if(this.checked){this.parentElement.classList.add(\'checkedanimation\');}else{this.parentElement.classList.remove(\'checkedanimation\', \'linethrough\')}">'
+            +'<label for="' + doc.id + 'box">' + doc.data().itemName + '</label>'
+            +'<button id="delete-button" class="icon-button fa font-16 fa-trash float-right color-nicepink-light"></button>'   
+            +'<div class="dividersolid"></div>';
+            document.getElementById(doc.id).classList.add('fac', 'fac-checkbox-round', 'fac-nicepink', 'list-item-margin')
+        
+             
+        //delete item in database when clicking on Trash button
+        const deleteBtn = document.getElementById('delete-button') 
+        deleteBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            let id = e.target.parentElement.getAttribute('id');
+            db.collection('mainCollection').doc(id).delete();
         });
 
 
 
+        }
 
-        auth.onAuthStateChanged(function(user) {
-            if (user) {
-              
-             console.log(user.uid)
-            }
-        });        
+
+
+
+
+
+     
 
 
         //define realtime listener for changes
 
         db.collection('mainCollection').onSnapshot(snapshot => {
             let changes = snapshot.docChanges();
+            
+            
             changes.forEach(change => {
-                console.log(change.doc.data());
-                /*
+                
                 if(change.type == 'added'){
-                    renderCafe(change.doc);
-                } else if (change.type == 'removed'){
-                    let li = cafeList.querySelector('[data-id=' + change.doc.id + ']');
-                    cafeList.removeChild(li);
+                    renderListItem(change.doc);
+                } 
+                else if (change.type == 'removed'){
+                    console.log('just removed')
+                    let DIV = playgroundlist.querySelector('[id=' + change.doc.id + ']');
+                    playgroundlist.removeChild(DIV);
                 }
-                */
+                
             });
+            
         });
 
 
