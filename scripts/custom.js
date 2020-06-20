@@ -333,6 +333,8 @@ $(document).ready(function(){
                 else if (change.type == 'removed'){
                     let DIV = playgroundlist.querySelector('[id=' + change.doc.id + ']');
                     playgroundlist.removeChild(DIV);
+                }else if (change.type == 'modified') {
+                    renderListItem(change.doc);
                 }
                 
             });
