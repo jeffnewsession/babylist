@@ -234,30 +234,35 @@ $(document).ready(function(){
 
         const db = firebase.firestore();
         
-        db.collection('mainCollection').get().then(snapshot => {
-            snapshot.docs.forEach(doc => {
-                console.log(doc.data().userCustomID);
-            });
-        });
 
 
+        //ADD ITEM
         const addItemForm = document.querySelector('#addItemForm')
 
         addItemForm.addEventListener('submit', (e) => {
             e.preventDefault();
             db.collection('mainCollection').add({
                 userCustomID: userId, //userID variable comes from above on pageload
-                itemName: addItemForm.itemNameField.value
+                itemName: addItemForm.itemNameField.value,
+                checkStatus: 'unchecked'
             });
-            //reset listItem input and blur field
+            //reset listItem input field and blur field
             addItemForm.itemNameField.value = '';
             addItemForm.itemNameField.blur();
         });
 
+
+
+
+
+
+
+
         ////RENDER LIST HTML FUNCTION
         //TODO (maybe): catch checked action in firestore to keep track of what is checked even after reload
 
-        function renderListItem(doc) {
+        function renderListItem(doc) {            
+            
             const playgroundlist = document.querySelector('#playgroundlist');
             let DIV = document.createElement('div');
             DIV.setAttribute('id', doc.id)
@@ -266,22 +271,45 @@ $(document).ready(function(){
             '<span></span>'
             +'<input id="' + doc.id + 'box" type="checkbox" value="0" onclick="if(this.checked){this.parentElement.classList.add(\'checkedanimation\');}else{this.parentElement.classList.remove(\'checkedanimation\', \'linethrough\')}">'
             +'<label for="' + doc.id + 'box">' + doc.data().itemName + '</label>'
-            +'<button id="delete-button" class="icon-button fa font-16 fa-trash float-right color-nicepink-light"></button>'   
+            +'<button id="' + doc.id + 'delete-button" class="icon-button fa font-16 fa-trash float-right color-nicepink-light"></button>'   
             +'<div class="dividersolid"></div>';
             document.getElementById(doc.id).classList.add('fac', 'fac-checkbox-round', 'fac-nicepink', 'list-item-margin')
         
-             
-        //delete item in database when clicking on Trash button
-        const deleteBtn = document.getElementById('delete-button') 
-        deleteBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            let id = e.target.parentElement.getAttribute('id');
-            db.collection('mainCollection').doc(id).delete();
-        });
+        
+            document.getElementById(doc.id + 'delete-button').addEventListener('click', (e) => {
+                e.stopPropagation();
+                let id = e.target.parentElement.getAttribute('id');
+                db.collection('mainCollection').doc(id).delete();
+            });
 
+            //when checkbox clicked, update checkStatus in db 
+            document.getElementById(doc.id + 'box').addEventListener('click', (e) => {
+                if(document.getElementById(doc.id + 'box').checked){
+                    console.log('item is checked')
+                    var checkStatus = db.collection("mainCollection").doc(doc.id);
+                    // Set the checkStatus to "checked" in db
+                    return checkStatus.update({
+                      checkStatus: "checked"
+                    })
+                }else{
+                    // Set the checkStatus to "unchecked" in db
+                    var checkStatus = db.collection("mainCollection").doc(doc.id);
+                    return checkStatus.update({
+                        checkStatus: "unchecked"
+                      })                
+                    }                 
+            }) 
+        
+           
 
+            //on pageload, apply class to checked element in db
+            if(doc.data().checkStatus === "checked") {
+                document.getElementById(doc.id).classList.add('checkedanimation')
+                document.getElementById(doc.id + 'box').checked = true;
+            }
 
         }
+
 
 
 
@@ -303,7 +331,6 @@ $(document).ready(function(){
                     renderListItem(change.doc);
                 } 
                 else if (change.type == 'removed'){
-                    console.log('just removed')
                     let DIV = playgroundlist.querySelector('[id=' + change.doc.id + ']');
                     playgroundlist.removeChild(DIV);
                 }
