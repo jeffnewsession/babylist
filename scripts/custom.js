@@ -291,12 +291,14 @@ $(document).ready(function(){
                     return checkStatus.update({
                       checkStatus: "checked"
                     })
-                }else{
+                }else if (!document.getElementById(doc.id + 'box').checked){
                     // Set the checkStatus to "unchecked" in db
                     var checkStatus = db.collection("mainCollection").doc(doc.id);
-                    document.getElementById(doc.id).classList.remove('checkedanimation')
                     return checkStatus.update({
                         checkStatus: "unchecked"
+                      })
+                      .then(function() {
+                        document.getElementById(doc.id).classList.remove('checkedanimation')
                       })                
                     }                 
             }) 
