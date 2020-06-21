@@ -6533,3 +6533,7 @@ span..input-style-1-custom-active {
 .small-pic {
   width: 30px;
 }
+
+.underline {
+  text-decoration: underline;
+}
