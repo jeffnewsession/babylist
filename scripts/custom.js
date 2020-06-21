@@ -294,6 +294,7 @@ $(document).ready(function(){
                 }else{
                     // Set the checkStatus to "unchecked" in db
                     var checkStatus = db.collection("mainCollection").doc(doc.id);
+                    document.getElementById(doc.id).classList.remove('checkedanimation')
                     return checkStatus.update({
                         checkStatus: "unchecked"
                       })                
