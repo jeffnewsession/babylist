@@ -275,13 +275,17 @@ $(document).ready(function(){
             +'<div class="dividersolid"></div>';
             document.getElementById(doc.id).classList.add('fac', 'fac-checkbox-round', 'fac-nicepink', 'list-item-margin')
         
-        
+            //delete item from Firestore when Trash clicked
             document.getElementById(doc.id + 'delete-button').addEventListener('click', (e) => {
                 e.stopPropagation();
                 let id = e.target.parentElement.getAttribute('id');
                 db.collection('mainCollection').doc(id).delete();
             });
 
+
+
+
+            
             //when checkbox clicked, update checkStatus in db 
             document.getElementById(doc.id + 'box').addEventListener('click', (e) => {
                 if(document.getElementById(doc.id + 'box').checked){
@@ -296,10 +300,7 @@ $(document).ready(function(){
                     var checkStatus = db.collection("mainCollection").doc(doc.id);
                     return checkStatus.update({
                         checkStatus: "unchecked"
-                      })
-                      .then(function() {
-                        document.getElementById(doc.id).classList.remove('checkedanimation')
-                      })                
+                      })           
                     }                 
             }) 
         
@@ -309,14 +310,11 @@ $(document).ready(function(){
             if(doc.data().checkStatus === "checked") {
                 document.getElementById(doc.id).classList.add('checkedanimation')
                 document.getElementById(doc.id + 'box').checked = true;
+            } else {
+                document.getElementById(doc.id).classList.remove('checkedanimation')
             }
 
         }
-
-
-
-
-
 
 
      
@@ -338,6 +336,7 @@ $(document).ready(function(){
                     playgroundlist.removeChild(DIV);
                 }else if (change.type == 'modified') {
                     renderListItem(change.doc);
+                   
                 }
                 
             });
