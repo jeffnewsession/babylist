@@ -133,10 +133,10 @@ $(document).ready(function(){
               }, 400);   
 
             }
-      });
+      })
     };
 
-    checkedIfSignedIn();
+    checkedIfSignedIn()
 
     //// LOGIN
 
@@ -182,6 +182,8 @@ $(document).ready(function(){
                     }, 100);
                     var carouselIntroPage = document.getElementById("carouselIntroPage");
                     carouselIntroPage.classList.add("invisible"); 
+
+                    
                     
 
 
@@ -265,8 +267,9 @@ $(document).ready(function(){
             
             const playgroundlist = document.querySelector('#playgroundlist');
             let DIV = document.createElement('div');
-            DIV.setAttribute('id', doc.id)
-            playgroundlist.appendChild(DIV)
+            DIV.setAttribute('id', doc.id);
+            playgroundlist.appendChild(DIV);
+            document.getElementById('guide').classList.add('invisible');
             document.getElementById(doc.id).innerHTML = 
             '<span></span>'
             +'<input id="' + doc.id + 'box" type="checkbox" value="0" onclick="if(this.checked){this.parentElement.classList.add(\'checkedanimation\');}else{this.parentElement.classList.remove(\'checkedanimation\', \'linethrough\')}">'
@@ -312,7 +315,7 @@ $(document).ready(function(){
                 document.getElementById(doc.id + 'box').checked = true;
             } else {
                 document.getElementById(doc.id).classList.remove('checkedanimation')
-            }
+            } 
 
         }
 
@@ -322,27 +325,37 @@ $(document).ready(function(){
 
         //define realtime listener for changes
 
-        db.collection('mainCollection').onSnapshot(snapshot => {
-            let changes = snapshot.docChanges();
-            
-            
-            changes.forEach(change => {
-                
-                if(change.type == 'added'){
-                    renderListItem(change.doc);
-                } 
-                else if (change.type == 'removed'){
-                    let DIV = playgroundlist.querySelector('[id=' + change.doc.id + ']');
-                    playgroundlist.removeChild(DIV);
-                }else if (change.type == 'modified') {
-                    renderListItem(change.doc);
-                   
-                }
-                
-            });
-            
+
+        auth.onAuthStateChanged(function(user) {
+            if (user) {
+
+                console.log(user.uid)
+                db.collection('mainCollection').where("userCustomID", "==", user.uid)
+                .onSnapshot(snapshot => {
+                    let changes = snapshot.docChanges();
+                    console.log(changes)
+                    
+                    changes.forEach(change => {
+                        
+                        if(change.type == 'added'){
+                            renderListItem(change.doc);
+                        } 
+                        else if (change.type == 'removed'){
+                            let DIV = playgroundlist.querySelector('[id=' + change.doc.id + ']');
+                            playgroundlist.removeChild(DIV);
+                        }else if (change.type == 'modified') {
+                            renderListItem(change.doc);             
+                        } 
+                        
+                    });
+                    
+                });
+            }
         });
 
+
+
+    
 
 
                
