@@ -297,9 +297,14 @@ $(document).ready(function(){
             +'<div class="dividersolid"></div>';
             document.getElementById(doc.id).classList.add('fac', 'fac-checkbox-round', 'fac-nicepink', 'list-item-margin')
         
-            //delete item from Firestore when Trash clicked
+            //delete item from DOM + Firestore when Trash clicked
             document.getElementById(doc.id + 'delete-button').addEventListener('click', (e) => {
                 e.stopPropagation();
+
+                const playgroundlist = document.querySelector('#playgroundlist');
+                let DIV = document.getElementById(doc.id);
+                playgroundlist.removeChild(DIV);
+
                 let id = e.target.parentElement.getAttribute('id');
                 db.collection('mainCollection').doc(id).delete();
             });
@@ -308,7 +313,6 @@ $(document).ready(function(){
             //when checkbox clicked, update checkStatus in db 
             document.getElementById(doc.id + 'box').addEventListener('click', (e) => {
                 if(document.getElementById(doc.id + 'box').checked){
-                    console.log('item is checked')
                     var checkStatus = db.collection("mainCollection").doc(doc.id);
                     // Set the checkStatus to "checked" in db
                     return checkStatus.update({
@@ -336,14 +340,6 @@ $(document).ready(function(){
         ////END RENDER LIST HTML FUNCTION
 
      
-        function renderListItem2(doc) {
-            console.log('rendered to Daytrip')
-        }
-
-
-
-
-
 
         //render Daytrip list
 
@@ -361,19 +357,26 @@ $(document).ready(function(){
             +'<button id="' + doc.id + 'delete-button" class="icon-button fa font-16 fa-trash float-right color-niceblue-light"></button>'   
             +'<div class="dividersolid"></div>';
             document.getElementById(doc.id).classList.add('fac', 'fac-checkbox-round', 'fac-niceblue', 'list-item-margin')
-        
-            //delete item from Firestore when Trash clicked
+
+            //delete item from DOM + Firestore when Trash clicked
             document.getElementById(doc.id + 'delete-button').addEventListener('click', (e) => {
                 e.stopPropagation();
-                let id = e.target.parentElement.getAttribute('id');
-                db.collection('mainCollection').doc(id).delete();
+                const daytriplist = document.querySelector('#daytriplist');
+                let DIV = document.getElementById(doc.id);
+                daytriplist.removeChild(DIV);
+
+                setTimeout(() => {
+                    let id = e.target.parentElement.getAttribute('id');
+                    db.collection('mainCollection').doc(id).delete();                        
+                }, 1000);
+
+
             });
 
 
             //when checkbox clicked, update checkStatus in db 
             document.getElementById(doc.id + 'box').addEventListener('click', (e) => {
                 if(document.getElementById(doc.id + 'box').checked){
-                    console.log('item is checked')
                     var checkStatus = db.collection("mainCollection").doc(doc.id);
                     // Set the checkStatus to "checked" in db
                     return checkStatus.update({
@@ -419,28 +422,31 @@ $(document).ready(function(){
         auth.onAuthStateChanged(function(user) {
             if (user) {
 
-                console.log(user.uid)
                 db.collection('mainCollection').where("userCustomID", "==", user.uid)
                 .onSnapshot(snapshot => {
                     let changes = snapshot.docChanges();
-                    console.log(changes)
                     
                     
                     changes.forEach(change => {
                         
                        if(change.type == 'added' && change.doc.data().list == 'playground'){
                             renderListItem(change.doc);
-                            console.log('this should be rendered to playground')
                         }
                         else if(change.type == 'added' && change.doc.data().list == 'daytrip'){
                             renderListItem2(change.doc);
-                            console.log('this should be rendered to daytrip')
                         }
                         //check this bug out!!!! when checking an item, it is then impossible to remove another
-                        else if (change.type == 'removed'){
+/*                        else if (change.type == 'removed' && change.doc.data().list == 'playground'){
+                            const playgroundlist = document.querySelector('#playgroundlist');
                             let DIV = playgroundlist.querySelector('[id=' + change.doc.id + ']');
                             playgroundlist.removeChild(DIV);
-                        }else if (change.type == 'modified' && change.doc.data().list == 'playground') {
+                        } */
+/*                        else if (change.type == 'removed' && change.doc.data().list == 'daytrip'){
+                            const daytriplist = document.querySelector('#daytriplist');
+                            let DIV = daytriplist.querySelector('[id=' + change.doc.id + ']');
+                            daytriplist.removeChild(DIV);
+                        } */
+                        else if (change.type == 'modified' && change.doc.data().list == 'playground') {
                             renderListItem(change.doc);             
                         }else if (change.type == 'modified' && change.doc.data().list == 'daytrip') {
                             renderListItem2(change.doc);             
