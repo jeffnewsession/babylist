@@ -124,6 +124,8 @@ href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"
                 </div>
 
                 <!--COLLAPSE LISTS STARTS-->
+
+                <!--PLAYGROUNDLIST STARTS-->              
                 <div class="card card-style mb-3">
                     <div class="list-group list-custom-small list-icon-0 bg-nicepink-dark pl-3 pr-4">
                         <a data-toggle="collapse" href="#collapse-5">
@@ -133,17 +135,20 @@ href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"
                             <i class="fa font-22 fa-angle-down"></i>
                         </a>        
                     </div>
-                    <div class="collapse pl-2 pr-4" id="collapse-5">
+                                                    <!--ID to change here-->
+                    <div class="collapse pl-2 pr-4" id="collapse-5" >
 
                         
 
                             <div class="input-style has-icon input-style-1-custom font-22 input-required">
                                 
+                                      <!--ID to change here-->
                                 <form id="UncheckAllForm">
                                
                                 <button type="submit" style="margin-top: 10px;" class="btn btn-xxs btn-full float-left mb-3 rounded text-uppercase font-900 border-white-light color-nicepink-light bg-white-light underline">Uncheck all</button>
                                 </form>
 
+                                         <!--ID to change here--> 
                                 <form id="DeleteAllForm">
                                
                                     <button type="submit" style="margin-top: 10px;" class="btn btn-xxs btn-full float-right mb-3 rounded text-uppercase font-900 border-white-light color-nicepink-light bg-white-light underline">Delete all</button>
@@ -152,22 +157,27 @@ href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"
                             </div> 
                         <br><br>
                         
-                        <!--LIST START-->
+                        <!-- PLAYGROUND ITEM LIST START-->
+                         <!--ID to change here--> 
                     <div id="playgroundlist"> 
 
                         <!--populated dynamically from firestore-->
 
+                                                    <!--ID to change here-->
                       <div style="text-align: left" id="guide" class="">  
                         <img class="addfirstitempic"  src="images/baby/addyourfirst.png">
                       </div>
 
                     </div>
+                    <!-- PLAYGROUND ITEM LIST ENDS-->
 
 
                         <div class="input-style has-icon input-style-1-custom font-22 input-required">
                                 <i class="input-icon fa fa-plus font-22 color-nicepink-light"></i>
                                 <span></span>
+                                         <!--ID to change here-->
                                 <form id="addItemForm">
+                                                          <!--ID to change here-->
                                 <input class="font-22" id="itemNameField" type="text" placeholder="Add item" style="width: 80%;">
                                 <button type="submit" style="margin-top: 10px;" class="btn btn-xxs btn-full float-right mb-3 rounded text-uppercase font-900 border-nicepink-light color-white-light bg-nicepink-light">Add</button>
                                 </form>
@@ -178,92 +188,79 @@ href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"
                     </div>
                     
                 </div>
+                <!--PLAYGROUNDLIST ENDS-->
+                    
+ 
                 
+
+                <!--DAYTRIPLIST STARTS-->              
                 <div class="card card-style mb-3">
                     <div class="list-group list-custom-small list-icon-0 bg-niceblue-dark pl-3 pr-4">
                         <a data-toggle="collapse" href="#collapse-6">
-                            <i class="fa font-22 fa-bicycle"></i>
+                            
+                            <i class="fa font-22 fa-bicycle"></i> 
                             <span class="font-22 color-white">Daytrip</span>
                             <i class="fa font-22 fa-angle-down"></i>
                         </a>        
                     </div>
-                    <div class="collapse pl-2 pr-4" id="collapse-6">
-                        <div class="list-group list-custom-small">
-                            <a href="#">
-                                <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
-                                <label for="vehicle1"> I have a bike</label>
-                            </a>        
-                            <a href="#">
-                                <i class="fac fac-radio fac-red"></i>
-                                <span>Twitter</span>
-                                <i class="fa fa-angle-right"></i>
-                            </a>        
-                            <a href="#" class="border-0">
-                                <i class="fab font-13 fa-linkedin color-linkedin"></i>
-                                <span>Linkedin</span>
-                                <i class="fa fa-angle-right"></i>
-                            </a>        
-                        </div>
-                    </div>
-                </div>        
-                
-                <div class="card card-style mb-3">
-                    <div class="list-group list-custom-small list-icon-0 bg-nicebrown-dark pl-3 pr-4">
-                        <a data-toggle="collapse" href="#collapse-7">
-                            <i class="fa font-22 fa-suitcase"></i>
-                            <span class="font-22 color-white">Vacation</span>
-                            <i class="fa font-22 fa-angle-down"></i>
-                        </a>        
-                    </div>
-                    <div class="collapse pl-2 pr-4" id="collapse-7">
-                        <div class="list-group list-custom-small">
-                            <a href="#">
-                                <i class="fa font-13 fa-home color-green1-dark"></i>
-                                <span>home@domain.com</span>
-                                <i class="fa fa-angle-right"></i>
-                            </a>        
-                            <a href="#">
-                                <i class="fa font-13 fa-suitcase color-brown1-light"></i>
-                                <span>business@domain.com</span>
-                                <i class="fa fa-angle-right"></i>
-                            </a>        
-                            <a href="#" class="border-0">
-                                <i class="fa font-13 fa-building color-gray2-dark"></i>
-                                <span>office@domain.com</span>
-                                <i class="fa fa-angle-right"></i>
-                            </a>        
-                        </div>
-                    </div>
-                </div>
+                                                    <!--ID to change here-->
+                    <div class="collapse pl-2 pr-4" id="collapse-6" >
 
-                <div class="card card-style">
-                    <div class="list-group list-custom-small list-icon-0 bg-pastelgreen-dark pl-3 pr-4">
-                        <a data-toggle="collapse" href="#collapse-7">
-                            <i class="fa font-22 fa-baby"></i>
-                            <span class="font-22 color-white">Custom list</span>
-                            <i class="fa font-22 fa-angle-down"></i>
-                        </a>        
+                        
+
+                            <div class="input-style has-icon input-style-1-custom font-22 input-required">
+                                
+                                      <!--ID to change here-->
+                                <form id="UncheckAllForm2">
+                               
+                                <button type="submit" style="margin-top: 10px;" class="btn btn-xxs btn-full float-left mb-3 rounded text-uppercase font-900 border-white-light color-niceblue-light bg-white-light underline">Uncheck all</button>
+                                </form>
+
+                                         <!--ID to change here--> 
+                                <form id="DeleteAllForm2">
+                               
+                                    <button type="submit" style="margin-top: 10px;" class="btn btn-xxs btn-full float-right mb-3 rounded text-uppercase font-900 border-white-light color-niceblue-light bg-white-light underline">Delete all</button>
+                                    </form>
+
+                            </div> 
+                        <br><br>
+                        
+                    <!-- DAYTRIP ITEM LIST START-->
+                         <!--ID to change here--> 
+                    <div id="daytriplist"> 
+
+                        <!--populated dynamically from firestore-->
+
+                                                    <!--ID to change here-->
+                      <div style="text-align: left" id="guide2" class="">  
+                        <img class="addfirstitempic"  src="images/baby/addyourfirst.png">
+                      </div>
+
                     </div>
-                    <div class="collapse pl-2 pr-4" id="collapse-7">
-                        <div class="list-group list-custom-small">
-                            <a href="#">
-                                <i class="fa font-13 fa-home color-green1-dark"></i>
-                                <span>home@domain.com</span>
-                                <i class="fa fa-angle-right"></i>
-                            </a>        
-                            <a href="#">
-                                <i class="fa font-13 fa-suitcase color-brown1-light"></i>
-                                <span>business@domain.com</span>
-                                <i class="fa fa-angle-right"></i>
-                            </a>        
-                            <a href="#" class="border-0">
-                                <i class="fa font-13 fa-building color-gray2-dark"></i>
-                                <span>office@domain.com</span>
-                                <i class="fa fa-angle-right"></i>
-                            </a>        
-                        </div>
+                    <!-- DAYTRIP ITEM LIST ENDS-->
+
+
+                        <div class="input-style has-icon input-style-1-custom font-22 input-required">
+                                <i class="input-icon fa fa-plus font-22 color-niceblue-light"></i>
+                                <span></span>
+                                         <!--ID to change here-->
+                                <form id="addItemForm2">
+                                                          <!--ID to change here-->
+                                <input class="font-22" id="itemNameField2" type="text" placeholder="Add item" style="width: 80%;">
+                                <button type="submit" style="margin-top: 10px;" class="btn btn-xxs btn-full float-right mb-3 rounded text-uppercase font-900 border-niceblue-light color-white-light bg-niceblue-light">Add</button>
+                                </form>
+                            </div> 
+
+  
+
                     </div>
+                    
                 </div>
+                <!--DAYTRIPLIST ENDS-->
+
+
+
+
                 <!--COLLAPSE LISTS END-->
 
             </div>
