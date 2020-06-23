@@ -208,6 +208,10 @@ $(document).ready(function(){
               logout.addEventListener('click', (e) => {
               e.preventDefault();
               auth.signOut();
+              document.getElementById('playgroundlist').innerHTML = 
+              '<div style="text-align: left" id="guide" class="">'  
+              +'<img class="addfirstitempic"  src="images/baby/addyourfirst.png">'
+              +'</div>';
               var element2 = document.getElementById("appmain");
               element2.classList.remove('animate__animated', 'animate__fadeInUp');
               var element3 = document.getElementById("profileBtn");
@@ -238,7 +242,7 @@ $(document).ready(function(){
         
 
 
-        //ADD ITEM
+        ////ADD ITEM / playground
         const addItemForm = document.querySelector('#addItemForm')
 
         addItemForm.addEventListener('submit', (e) => {
@@ -246,22 +250,37 @@ $(document).ready(function(){
             db.collection('mainCollection').add({
                 userCustomID: userId, //userID variable comes from above on pageload
                 itemName: addItemForm.itemNameField.value,
-                checkStatus: 'unchecked'
+                checkStatus: 'unchecked',
+                list: 'playground'
             });
             //reset listItem input field and blur field
             addItemForm.itemNameField.value = '';
             addItemForm.itemNameField.blur();
         });
 
+        ////ADD ITEM / daytrip
+        const addItemForm2 = document.querySelector('#addItemForm2')
+
+        addItemForm2.addEventListener('submit', (e) => {
+            e.preventDefault();
+            db.collection('mainCollection').add({
+                userCustomID: userId, //userID variable comes from above on pageload
+                itemName: addItemForm2.itemNameField2.value,
+                checkStatus: 'unchecked',
+                list: 'daytrip'
+            });
+            //reset listItem input field and blur field
+            addItemForm2.itemNameField2.value = '';
+            addItemForm2.itemNameField2.blur();
+        });
 
 
 
 
 
+////RENDER LIST HTML FUNCTION
 
-
-        ////RENDER LIST HTML FUNCTION
-        //TODO (maybe): catch checked action in firestore to keep track of what is checked even after reload
+        //render Playgroundlist
 
         function renderListItem(doc) {            
             
@@ -286,9 +305,6 @@ $(document).ready(function(){
             });
 
 
-
-
-            
             //when checkbox clicked, update checkStatus in db 
             document.getElementById(doc.id + 'box').addEventListener('click', (e) => {
                 if(document.getElementById(doc.id + 'box').checked){
@@ -307,7 +323,6 @@ $(document).ready(function(){
                     }                 
             }) 
         
-           
 
             //on pageload, apply class to checked element in db
             if(doc.data().checkStatus === "checked") {
@@ -318,12 +333,87 @@ $(document).ready(function(){
             } 
 
         }
+        ////END RENDER LIST HTML FUNCTION
 
+     
+        function renderListItem2(doc) {
+            console.log('rendered to Daytrip')
+        }
+
+
+
+
+
+
+        //render Daytrip list
+
+        function renderListItem2(doc) {            
+            
+            const daytriplist = document.querySelector('#daytriplist');
+            let DIV = document.createElement('div');
+            DIV.setAttribute('id', doc.id);
+            daytriplist.appendChild(DIV);
+            document.getElementById('guide2').classList.add('invisible');
+            document.getElementById(doc.id).innerHTML = 
+            '<span></span>'
+            +'<input id="' + doc.id + 'box" type="checkbox" value="0" onclick="if(this.checked){this.parentElement.classList.add(\'checkedanimation\');}else{this.parentElement.classList.remove(\'checkedanimation\', \'linethrough\')}">'
+            +'<label for="' + doc.id + 'box">' + doc.data().itemName + '</label>'
+            +'<button id="' + doc.id + 'delete-button" class="icon-button fa font-16 fa-trash float-right color-niceblue-light"></button>'   
+            +'<div class="dividersolid"></div>';
+            document.getElementById(doc.id).classList.add('fac', 'fac-checkbox-round', 'fac-niceblue', 'list-item-margin')
+        
+            //delete item from Firestore when Trash clicked
+            document.getElementById(doc.id + 'delete-button').addEventListener('click', (e) => {
+                e.stopPropagation();
+                let id = e.target.parentElement.getAttribute('id');
+                db.collection('mainCollection').doc(id).delete();
+            });
+
+
+            //when checkbox clicked, update checkStatus in db 
+            document.getElementById(doc.id + 'box').addEventListener('click', (e) => {
+                if(document.getElementById(doc.id + 'box').checked){
+                    console.log('item is checked')
+                    var checkStatus = db.collection("mainCollection").doc(doc.id);
+                    // Set the checkStatus to "checked" in db
+                    return checkStatus.update({
+                      checkStatus: "checked"
+                    })
+                }else if (!document.getElementById(doc.id + 'box').checked){
+                    // Set the checkStatus to "unchecked" in db
+                    var checkStatus = db.collection("mainCollection").doc(doc.id);
+                    return checkStatus.update({
+                        checkStatus: "unchecked"
+                      })           
+                    }                 
+            }) 
+        
+
+            //on pageload, apply class to checked element in db
+            if(doc.data().checkStatus === "checked") {
+                document.getElementById(doc.id).classList.add('checkedanimation')
+                document.getElementById(doc.id + 'box').checked = true;
+            } else {
+                document.getElementById(doc.id).classList.remove('checkedanimation')
+            } 
+
+        }
+        ////END RENDER LIST HTML FUNCTION
 
      
 
 
-        //define realtime listener for changes
+
+
+
+
+
+
+
+
+
+
+        /////REALTIME LISTENER
 
 
         auth.onAuthStateChanged(function(user) {
@@ -335,18 +425,26 @@ $(document).ready(function(){
                     let changes = snapshot.docChanges();
                     console.log(changes)
                     
+                    
                     changes.forEach(change => {
                         
-                        if(change.type == 'added'){
+                       if(change.type == 'added' && change.doc.data().list == 'playground'){
                             renderListItem(change.doc);
-                        } 
+                            console.log('this should be rendered to playground')
+                        }
+                        else if(change.type == 'added' && change.doc.data().list == 'daytrip'){
+                            renderListItem2(change.doc);
+                            console.log('this should be rendered to daytrip')
+                        }
+                        //check this bug out!!!! when checking an item, it is then impossible to remove another
                         else if (change.type == 'removed'){
                             let DIV = playgroundlist.querySelector('[id=' + change.doc.id + ']');
                             playgroundlist.removeChild(DIV);
-                        }else if (change.type == 'modified') {
+                        }else if (change.type == 'modified' && change.doc.data().list == 'playground') {
                             renderListItem(change.doc);             
-                        } 
-                        
+                        }else if (change.type == 'modified' && change.doc.data().list == 'daytrip') {
+                            renderListItem2(change.doc);             
+                        }
                     });
                     
                 });
