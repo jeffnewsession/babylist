@@ -435,17 +435,16 @@ $(document).ready(function(){
                         else if(change.type == 'added' && change.doc.data().list == 'daytrip'){
                             renderListItem2(change.doc);
                         }
-                        //check this bug out!!!! when checking an item, it is then impossible to remove another
-/*                        else if (change.type == 'removed' && change.doc.data().list == 'playground'){
+                        else if (change.type == 'removed' && change.doc.data().list == 'playground'){
                             const playgroundlist = document.querySelector('#playgroundlist');
-                            let DIV = playgroundlist.querySelector('[id=' + change.doc.id + ']');
+                            let DIV = document.getElementById(change.doc.id);
                             playgroundlist.removeChild(DIV);
-                        } */
-/*                        else if (change.type == 'removed' && change.doc.data().list == 'daytrip'){
+                        } 
+                        else if (change.type == 'removed' && change.doc.data().list == 'daytrip'){
                             const daytriplist = document.querySelector('#daytriplist');
-                            let DIV = daytriplist.querySelector('[id=' + change.doc.id + ']');
+                            let DIV = document.getElementById(change.doc.id);
                             daytriplist.removeChild(DIV);
-                        } */
+                        } 
                         else if (change.type == 'modified' && change.doc.data().list == 'playground') {
                             renderListItem(change.doc);             
                         }else if (change.type == 'modified' && change.doc.data().list == 'daytrip') {
