@@ -19,7 +19,7 @@ $(document).ready(function(){
 
 
    
-
+        
 
 
 
@@ -47,8 +47,11 @@ $(document).ready(function(){
 
 
         const auth = firebase.auth();
+        const db = firebase.firestore();
 
 
+    
+        var shareID = "test"
 
 
 
@@ -58,85 +61,64 @@ $(document).ready(function(){
 
     ////SIGN-UP 
 
+    
+
 
         const signupForm = document.querySelector('#signup-form');
-
-        //signup-function
         signupForm.addEventListener('submit', (e) => {
-        e.preventDefault();
+          e.preventDefault();
+          
+          
 
-            // get user info
-            const email = signupForm['signup-email'].value;
-            const password = signupForm['signup-password'].value;
+          // get user info
+          const email = signupForm['signup-email'].value;
+          const password = signupForm['signup-password'].value;
+        
+          // sign up the user & add firestore data
+          
+          
 
-            // sign up the user
-            auth.createUserWithEmailAndPassword(email, password).then(cred => {
-                console.log(cred.user);
-
+          auth.createUserWithEmailAndPassword(email, password).then(cred => {
             
-            // if user successfully logged-in, redirect to appmain page
-            
-            auth.onAuthStateChanged(function(user) {
-                if (user) {
-                    location.href = "appmain.html";
-                } else {
-                  console.log('no user is logged-in')
-                }
-              });
-              
-            
+            setTimeout(function(){ 
+            console.log(cred.user.uid)    
+            return db.collection('usersCollection').doc(cred.user.uid).set({
+              customID: Math.floor(Math.random()*1000000)
             });
+
+            }, 500)
+            
+
+          }).then(() => {
+            // close the signup modal & reset form
+            $('#menu-signup').hideMenu();
+            console.log('second then fired')
+          });
         });
 
-  
+
+
+
 
 
 
 
     /// User variable, value will come from login function below
     var userId;
-    
+    var shareID = "test"
 
-    ///DECIDE TO SHOW INTROPAGE OR APPMAIN DEPENDING ON AUTH STATUS
+    //ADD JOIN CODE (update shareID in usersCollection)
+    document.getElementById('testBtn').addEventListener("click", (e) => {
+        console.log(testInput.value)
+        return db.collection("usersCollection").doc(userId).update({
+            customID: testInput.value
+        }).then(function() {
+            console.log("Document successfully updated!");
+        })
+      });
 
-    const checkedIfSignedIn = () => {
-      auth.onAuthStateChanged(function(user) {
-        if (user) {
-            //assign user ID to variable above
-            userId = user.uid
 
-
-
-            //show APPMAIN
-            setTimeout(function(){ 
-                var element = document.getElementById("appmain");
-                element.classList.remove("invisible"); 
-                element.classList.add('animate__animated', 'animate__fadeInUp');
-                var element2 = document.getElementById("profileBtn");
-                element2.classList.remove("invisible");   
-                document.getElementById("usernamedisplay").innerHTML = user.email;             
-            }, 100);
-            var carouselIntroPage = document.getElementById("carouselIntroPage");
-            carouselIntroPage.classList.add("invisible"); 
-            var signinMenu = document.getElementById("intropage");
-            signinMenu.classList.add("invisible");  
-
-        } else {
-            //show INTROPAGE  
-            var signinMenu = document.getElementById("menu-signin");
-            signinMenu.classList.remove("invisible");  
-            var element = document.getElementById("intropage");
-            element.classList.remove("invisible");            
-            setTimeout(() => {
-                var carouselIntroPage = document.getElementById("carouselIntroPage");
-                carouselIntroPage.classList.remove("invisible"); 
-              }, 400);   
-
-            }
-      })
-    };
-
-    checkedIfSignedIn()
+    //checkedIfSignedIn()
 
     //// LOGIN
 
@@ -238,7 +220,7 @@ $(document).ready(function(){
         //------------------------
 
 
-        const db = firebase.firestore();
+
         
 
 
@@ -251,7 +233,8 @@ $(document).ready(function(){
                 userCustomID: userId, //userID variable comes from above on pageload
                 itemName: addItemForm.itemNameField.value,
                 checkStatus: 'unchecked',
-                list: 'playground'
+                list: 'playground',
+                shareID: shareID
             });
             //reset listItem input field and blur field
             addItemForm.itemNameField.value = '';
@@ -267,7 +250,8 @@ $(document).ready(function(){
                 userCustomID: userId, //userID variable comes from above on pageload
                 itemName: addItemForm2.itemNameField2.value,
                 checkStatus: 'unchecked',
-                list: 'daytrip'
+                list: 'daytrip',
+                shareID: shareID
             });
             //reset listItem input field and blur field
             addItemForm2.itemNameField2.value = '';
@@ -283,7 +267,6 @@ $(document).ready(function(){
         //render Playgroundlist
 
         function renderListItem(doc) {            
-            
             const playgroundlist = document.querySelector('#playgroundlist');
             let DIV = document.createElement('div');
             DIV.setAttribute('id', doc.id);
@@ -415,49 +398,130 @@ $(document).ready(function(){
 
 
 
+        
 
-        /////REALTIME LISTENER
+
+
+
+
+
+
+
+
+///DECIDE TO SHOW INTROPAGE OR APPMAIN DEPENDING ON AUTH STATUS 
+/// + REALTIME LISTENER
+
+    auth.onAuthStateChanged(function(user) {
+        if (user) {                  
 
 
         auth.onAuthStateChanged(function(user) {
             if (user) {
+                //assign user ID to variable above
+                userId = user.uid
+    
+    
+    
+                //show APPMAIN
+                setTimeout(function(){ 
+                    var element = document.getElementById("appmain");
+                    element.classList.remove("invisible"); 
+                    element.classList.add('animate__animated', 'animate__fadeInUp');
+                    var element2 = document.getElementById("profileBtn");
+                    element2.classList.remove("invisible");   
+                    document.getElementById("usernamedisplay").innerHTML = user.email;             
+                }, 100);
+                var carouselIntroPage = document.getElementById("carouselIntroPage");
+                carouselIntroPage.classList.add("invisible"); 
+                var signinMenu = document.getElementById("intropage");
+                signinMenu.classList.add("invisible");
+                
+                
+                //check if user exists
+                auth.onAuthStateChanged(function(user) {
+                    if (user) {
+    
+                        //retrieve shareID
+                        db.collection("usersCollection").doc(user.uid).get().then(function(doc) {
+                        shareID = doc.data().customID
+                        console.log('here is the shareID: ' + shareID)
 
-                db.collection('mainCollection').where("userCustomID", "==", user.uid)
-                .onSnapshot(snapshot => {
-                    let changes = snapshot.docChanges();
-                    
-                    
-                    changes.forEach(change => {
                         
-                       if(change.type == 'added' && change.doc.data().list == 'playground'){
-                            renderListItem(change.doc);
-                        }
-                        else if(change.type == 'added' && change.doc.data().list == 'daytrip'){
-                            renderListItem2(change.doc);
-                        }
-                        else if (change.type == 'removed' && change.doc.data().list == 'playground'){
-                            const playgroundlist = document.querySelector('#playgroundlist');
-                            let DIV = document.getElementById(change.doc.id);
-                            playgroundlist.removeChild(DIV);
-                        } 
-                        else if (change.type == 'removed' && change.doc.data().list == 'daytrip'){
-                            const daytriplist = document.querySelector('#daytriplist');
-                            let DIV = document.getElementById(change.doc.id);
-                            daytriplist.removeChild(DIV);
-                        } 
-                        else if (change.type == 'modified' && change.doc.data().list == 'playground') {
-                            renderListItem(change.doc);             
-                        }else if (change.type == 'modified' && change.doc.data().list == 'daytrip') {
-                            renderListItem2(change.doc);             
-                        }
-                    });
-                    
-                });
+                        //realtime listener
+                        db.collection('mainCollection').where("shareID", "==", shareID)
+                        .onSnapshot(snapshot => {
+                            let changes = snapshot.docChanges();
+                            
+                            //ventilate to the different render functions
+                            changes.forEach(change => {
+                                
+                               if(change.type == 'added' && change.doc.data().list == 'playground'){
+                                    renderListItem(change.doc);
+                                }
+                                else if(change.type == 'added' && change.doc.data().list == 'daytrip'){
+                                    renderListItem2(change.doc);
+                                }
+                                else if (change.type == 'removed' && change.doc.data().list == 'playground'){
+                                    const playgroundlist = document.querySelector('#playgroundlist');
+                                    let DIV = document.getElementById(change.doc.id);
+                                    playgroundlist.removeChild(DIV);
+                                } 
+                                else if (change.type == 'removed' && change.doc.data().list == 'daytrip'){
+                                    const daytriplist = document.querySelector('#daytriplist');
+                                    let DIV = document.getElementById(change.doc.id);
+                                    daytriplist.removeChild(DIV);
+                                } 
+                                else if (change.type == 'modified' && change.doc.data().list == 'playground') {
+                                    renderListItem(change.doc);             
+                                }else if (change.type == 'modified' && change.doc.data().list == 'daytrip') {
+                                    renderListItem2(change.doc);             
+                                }
+                            });
+                            
+                        });
+
+
+
+                        })
+    
+
+
+
+
+
+                        
+    
+                    };
+                })
+          
+    
+    
+    
+            //IF USER DOES NOT EXISTS
+            } else {
+                //show INTROPAGE  
+                var signinMenu = document.getElementById("menu-signin");
+                signinMenu.classList.remove("invisible");  
+                var element = document.getElementById("intropage");
+                element.classList.remove("invisible");            
+                setTimeout(() => {
+                    var carouselIntroPage = document.getElementById("carouselIntroPage");
+                    carouselIntroPage.classList.remove("invisible"); 
+                  }, 400);   
+    
+                }
+          })
+        //};
+  
+
+
+
+
             }
         });
+        
 
-
-
+        
     
 
 
