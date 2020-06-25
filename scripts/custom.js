@@ -56,45 +56,17 @@ $(document).ready(function(){
 
 
 
-    ////SIGN-UP 
 
-
-        const signupForm = document.querySelector('#signup-form');
-
-        //signup-function
-        signupForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-
-            // get user info
-            const email = signupForm['signup-email'].value;
-            const password = signupForm['signup-password'].value;
-
-            // sign up the user
-            auth.createUserWithEmailAndPassword(email, password).then(cred => {
-                console.log(cred.user);
-
-            
-            // if user successfully logged-in, redirect to appmain page
-            
-            auth.onAuthStateChanged(function(user) {
-                if (user) {
-                    location.href = "appmain.html";
-                } else {
-                  console.log('no user is logged-in')
-                }
-              });
-              
-            
-            });
-        });
 
   
 
 
 
 
-    /// User variable, value will come from login function below
+    /// userId variable: value will come from login function below
+    ///shareID variable: value will come from signup function below
     var userId;
+    var shareID;
     
 
     ///DECIDE TO SHOW INTROPAGE OR APPMAIN DEPENDING ON AUTH STATUS
@@ -105,6 +77,15 @@ $(document).ready(function(){
             //assign user ID to variable above
             userId = user.uid
 
+            setTimeout(() => {
+                db.collection("users3").doc(user.uid).get().then(function(doc) {
+                
+                    console.log("ShareID ready to be populated in browser:", doc.data().shareID);
+                    shareID = doc.data().shareID;
+                    console.log('variable in browser' + shareID);
+            })
+                
+            }, 1500);
 
 
             //show APPMAIN
@@ -168,8 +149,9 @@ $(document).ready(function(){
                     var signinMenu = document.getElementById("intropage");
                     signinMenu.classList.add("invisible");  
 
-                    //document.getElementById("menu-signin").classList.remove("menu-active")
+
                     $('#menu-signin').hideMenu();
+
 
                     //show appmain
                     setTimeout(function(){
@@ -195,6 +177,43 @@ $(document).ready(function(){
         });
 
 
+
+
+        ////SIGN-UP 
+
+
+        const signupForm = document.getElementById("signup-form");
+
+        //signup-function
+        signupForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+            // get user info
+            const email = signupForm['signup-email'].value;
+            const password = signupForm['signup-password'].value;
+
+            // sign up the user
+            auth.createUserWithEmailAndPassword(email, password).then(cred => {
+                console.log(cred.user.uid);
+
+                $('#menu-signup').hideMenu();
+
+                let shareID = Math.floor(Math.random() * 1000000)
+                console.log(shareID)
+
+                setTimeout(() => {
+                    db.collection("users3").doc(cred.user.uid).set({
+                        shareID: shareID,
+                        email: cred.user.email
+                    })
+                    .then(function() {
+                        console.log("Document successfully written!");
+                    }) 
+                        
+                }, 600);
+            
+            });
+        });
 
 
          //// LOG-OUT
@@ -251,7 +270,8 @@ $(document).ready(function(){
                 userCustomID: userId, //userID variable comes from above on pageload
                 itemName: addItemForm.itemNameField.value,
                 checkStatus: 'unchecked',
-                list: 'playground'
+                list: 'playground',
+                shareID: shareID
             });
             //reset listItem input field and blur field
             addItemForm.itemNameField.value = '';
@@ -422,14 +442,15 @@ $(document).ready(function(){
         auth.onAuthStateChanged(function(user) {
             if (user) {
 
-                db.collection('mainCollection').where("userCustomID", "==", user.uid)
+                db.collection('mainCollection')
                 .onSnapshot(snapshot => {
+
                     let changes = snapshot.docChanges();
                     
                     
                     changes.forEach(change => {
-                        
-                       if(change.type == 'added' && change.doc.data().list == 'playground'){
+
+                       if(change.type == 'added' && change.doc.data().list == 'playground' && change.doc.data().shareID == shareID){
                             renderListItem(change.doc);
                         }
                         else if(change.type == 'added' && change.doc.data().list == 'daytrip'){
@@ -453,10 +474,28 @@ $(document).ready(function(){
                     });
                     
                 });
+            } else {
+                console.log('shareID value not yet assigned')
             }
         });
 
 
+
+
+
+        ///ENTER JOIN CODE (change shareID in Firestore)
+
+
+
+        document.getElementById('testBtn').addEventListener('click', (e) => {
+            
+            db.collection("users3").doc(userId).set({
+                shareID: testInput.value
+            })
+            .then(function() {
+                console.log("shareID updated");
+            }) 
+        }); 
 
     
 
