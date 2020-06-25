@@ -437,15 +437,15 @@ $(document).ready(function(){
                 signinMenu.classList.add("invisible");
                 
                 
-                //check if user exists
-                auth.onAuthStateChanged(function(user) {
-                    if (user) {
+
+
+       
     
                         //retrieve shareID
                         db.collection("usersCollection").doc(user.uid).get().then(function(doc) {
-                        shareID = doc.data().customID
-                        console.log('here is the shareID: ' + shareID)
-
+                            console.log('here is the shareID: ' + shareID)
+                            shareID = doc.data().customID
+                            console.log('here is the shareID: ' + shareID)
                         
                         //realtime listener
                         db.collection('mainCollection').where("shareID", "==", shareID)
@@ -491,8 +491,8 @@ $(document).ready(function(){
 
                         
     
-                    };
-                })
+      
+ 
           
     
     
@@ -511,7 +511,7 @@ $(document).ready(function(){
     
                 }
           })
-        //};
+    
   
 
 
