@@ -499,7 +499,7 @@ $(document).ready(function(){
 
         document.getElementById('testBtn').addEventListener('click', (e) => {
             
-            db.collection("users3").doc(userId).set({
+            db.collection("usersCollection").doc(userId).set({
                 shareID: testInput.value
             })
             .then(function() {
