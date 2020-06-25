@@ -47,7 +47,7 @@ $(document).ready(function(){
 
 
         const auth = firebase.auth();
-
+        const db = firebase.firestore();
 
 
 
@@ -64,8 +64,11 @@ $(document).ready(function(){
 
 
     /// userId variable: value will come from login function below
-    ///shareID variable: value will come from signup function below
+
     var userId;
+    //try
+    var tempShareId = Math.floor(Math.random() * 1000000);
+    console.log('this is tempShareId that renews on each pageload: ' + tempShareId)
     var shareID;
     
 
@@ -76,16 +79,6 @@ $(document).ready(function(){
         if (user) {
             //assign user ID to variable above
             userId = user.uid
-
-            setTimeout(() => {
-                db.collection("users3").doc(user.uid).get().then(function(doc) {
-                
-                    console.log("ShareID ready to be populated in browser:", doc.data().shareID);
-                    shareID = doc.data().shareID;
-                    console.log('variable in browser' + shareID);
-            })
-                
-            }, 1500);
 
 
             //show APPMAIN
@@ -134,7 +127,7 @@ $(document).ready(function(){
 
             // log the user in
             auth.signInWithEmailAndPassword(email, password).then((cred) => {
-                console.log(cred.user)
+
             });
 
             // if user successfully logged-in...
@@ -151,6 +144,8 @@ $(document).ready(function(){
 
 
                     $('#menu-signin').hideMenu();
+
+                    
 
 
                     //show appmain
@@ -197,21 +192,16 @@ $(document).ready(function(){
                 console.log(cred.user.uid);
 
                 $('#menu-signup').hideMenu();
-
-                let shareID = Math.floor(Math.random() * 1000000)
-                console.log(shareID)
-
-                setTimeout(() => {
-                    db.collection("users3").doc(cred.user.uid).set({
-                        shareID: shareID,
-                        email: cred.user.email
-                    })
-                    .then(function() {
-                        console.log("Document successfully written!");
-                    }) 
-                        
-                }, 600);
             
+                //try
+                db.collection("usersCollection").doc(cred.user.uid).set({
+                    shareID: tempShareId
+                })
+                .then(function() {
+                    console.log("doc created in 'usersCollection' with shareID");
+                });
+                //end try
+
             });
         });
 
@@ -257,7 +247,7 @@ $(document).ready(function(){
         //------------------------
 
 
-        const db = firebase.firestore();
+
         
 
 
@@ -271,6 +261,7 @@ $(document).ready(function(){
                 itemName: addItemForm.itemNameField.value,
                 checkStatus: 'unchecked',
                 list: 'playground',
+                //try
                 shareID: shareID
             });
             //reset listItem input field and blur field
@@ -439,14 +430,30 @@ $(document).ready(function(){
         /////REALTIME LISTENER
 
 
+            
+        
         auth.onAuthStateChanged(function(user) {
-            if (user) {
+           if (user) {
+
+                //try            
+                db.collection('usersCollection')
+                .onSnapshot(snapshot => {
+                    let changes = snapshot.docChanges();
+                    changes.forEach(change => {
+                       if(change.type == 'added' && change.doc.id == user.uid){
+                            shareID = change.doc.data().shareID
+                            console.log(shareID)
+                        }
+                    });
+                });
+                //end try
+
 
                 db.collection('mainCollection')
                 .onSnapshot(snapshot => {
 
                     let changes = snapshot.docChanges();
-                    
+
                     
                     changes.forEach(change => {
 
@@ -474,10 +481,13 @@ $(document).ready(function(){
                     });
                     
                 });
-            } else {
-                console.log('shareID value not yet assigned')
+
+
             }
         });
+
+
+
 
 
 
