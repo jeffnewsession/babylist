@@ -69,7 +69,7 @@ $(document).ready(function(){
     //try
     var tempShareId = Math.floor(Math.random() * 1000000);
     console.log('this is tempShareId that renews on each pageload: ' + tempShareId)
-    var shareID;
+    var shareID = "wait..."
     
 
     ///DECIDE TO SHOW INTROPAGE OR APPMAIN DEPENDING ON AUTH STATUS
@@ -443,6 +443,8 @@ $(document).ready(function(){
                        if(change.type == 'added' && change.doc.id == user.uid){
                             shareID = change.doc.data().shareID
                             console.log(shareID)
+                            document.getElementById("shareID-display").innerHTML = shareID;
+
                         }
                     });
                 });
@@ -496,7 +498,7 @@ $(document).ready(function(){
         ///ENTER JOIN CODE (change shareID in Firestore)
 
 
-
+//Try
         document.getElementById('testBtn').addEventListener('click', (e) => {
             
             db.collection("usersCollection").doc(userId).set({
@@ -506,7 +508,7 @@ $(document).ready(function(){
                 console.log("shareID updated");
             }) 
         }); 
-
+//end try
     
 
 
