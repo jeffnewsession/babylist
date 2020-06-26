@@ -6238,7 +6238,7 @@ display:inline-block;
   line-height: 28px;
   padding-right: 0px;
   padding-top: 14px;
-  margin-top: 0px;
+  margin-top: 10px;
   margin-bottom: 2px;
   background-color: rgba(0, 0, 0, 0);
   margin-left: 0px !important;
@@ -6549,5 +6549,5 @@ span..input-style-1-custom-active {
 }
 
 .small-form {
-  max-width: 80%;
+  max-width: 85%;
 }
