@@ -74,12 +74,12 @@ $(document).ready(function(){
 
     ///DECIDE TO SHOW INTROPAGE OR APPMAIN DEPENDING ON AUTH STATUS
 
-    const checkedIfSignedIn = () => {
+    //const checkedIfSignedIn = () => {
       auth.onAuthStateChanged(function(user) {
         if (user) {
             //assign user ID to variable above
             userId = user.uid
-
+            console.log('on auth has launched')
 
             //show APPMAIN
             setTimeout(function(){ 
@@ -87,20 +87,26 @@ $(document).ready(function(){
                 element.classList.remove("invisible"); 
                 element.classList.add('animate__animated', 'animate__fadeInUp');
                 var element2 = document.getElementById("profileBtn");
-                element2.classList.remove("invisible");   
-                     
+                element2.classList.remove("invisible");
+                document.getElementById("barsMenu").classList.remove("invisible");   
+                document.getElementById("userNameDisplay").classList.remove("invisible"); 
+
             }, 100);
             var carouselIntroPage = document.getElementById("carouselIntroPage");
             carouselIntroPage.classList.add("invisible"); 
             var signinMenu = document.getElementById("intropage");
-            signinMenu.classList.add("invisible");  
+            signinMenu.classList.add("invisible"); 
+             
+
 
         } else {
             //show INTROPAGE  
             var signinMenu = document.getElementById("menu-signin");
             signinMenu.classList.remove("invisible");  
             var element = document.getElementById("intropage");
-            element.classList.remove("invisible");            
+            element.classList.remove("invisible");    
+            document.getElementById("barsMenu").classList.add("invisible");   
+                document.getElementById("userNameDisplay").classList.add("invisible");         
             setTimeout(() => {
                 var carouselIntroPage = document.getElementById("carouselIntroPage");
                 carouselIntroPage.classList.remove("invisible"); 
@@ -108,9 +114,9 @@ $(document).ready(function(){
 
             }
       })
-    };
+    //};
 
-    checkedIfSignedIn()
+    //checkedIfSignedIn()
 
     //// LOGIN
 
@@ -191,11 +197,13 @@ $(document).ready(function(){
             auth.createUserWithEmailAndPassword(email, password).then(cred => {
                 console.log(cred.user.uid);
 
-                $('#menu-signup').hideMenu();
+
             
                 //try
                 db.collection("usersCollection").doc(cred.user.uid).set({
-                    shareID: tempShareId
+                    shareID: tempShareId,
+                    email: cred.user.email,
+                    userName: document.getElementById("signup-username").value
                 })
                 .then(function() {
                     console.log("doc created in 'usersCollection' with shareID");
@@ -612,6 +620,7 @@ $(document).ready(function(){
                             shareID = change.doc.data().shareID
                             console.log(shareID)
                             document.getElementById("shareID-display").innerHTML = shareID;
+                            document.getElementById("userNameDisplayText").innerHTML = change.doc.data().userName;
 
                         }
                     });
