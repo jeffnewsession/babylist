@@ -88,7 +88,7 @@ $(document).ready(function(){
                 element.classList.add('animate__animated', 'animate__fadeInUp');
                 var element2 = document.getElementById("profileBtn");
                 element2.classList.remove("invisible");   
-                document.getElementById("usernamedisplay").innerHTML = user.email;             
+                     
             }, 100);
             var carouselIntroPage = document.getElementById("carouselIntroPage");
             carouselIntroPage.classList.add("invisible"); 
