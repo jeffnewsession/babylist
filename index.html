@@ -29,14 +29,14 @@ href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"
     <!-- header and footer bar go here-->
     <div class="header header-fixed header-logo-center">
         <a href="http://127.0.0.1:5500/index.html" class="header-title"><span>babyList</span></a>
-        <a href="#" class="header-icon header-icon-3" data-menu="menu-confirm">
-            <p class="font-13 color-nicepink-light" style="font-family: 'Roboto'; font-weight: 900;">Thomas</p>
+        <a href="#" id="userNameDisplay" class="header-icon header-icon-3 invisible" data-menu="menu-confirm">
+            <p class="font-13 color-nicepink-light" style="font-family: 'Roboto'; font-weight: 900;" id="userNameDisplayText"></p>
           </a>
         <a href="#" class="header-icon header-icon-4 invisible" data-menu="menu-confirm" id="profileBtn">
             <i class="font-19 fas fa-user-alt color-nicepink-light"></i>
           </a>
           <div id="header-icon-2-group">
-            <button type="button" id="header-2" data-toggle="dropdown" class="header-icon header-icon-1"><i class="font-19 fas fa-bars color-nicepink-light"></i></button>    
+            <button type="button" id="barsMenu" data-toggle="dropdown" class="header-icon header-icon-1 invisible"><i class="font-19 fas fa-bars color-nicepink-light"></i></button>    
             <div class="dropdown-menu bg-theme border-0 shadow-l rounded-s mr-2 mt-2" aria-labelledby="header-2">
                 <div class="list-group list-custom-small pl-2 pr-3">
                     <a href="#">
@@ -45,8 +45,12 @@ href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"
                     </a>         
                     <a href="#" class="border-0">
                         <i class="fa font-22 fa-plug color-nicebrown-light"></i>
-                        <span class="font-17">Connect account</span>
-                    </a>        
+                        <span class="font-17">Share/join account</span>
+                    </a>   
+                    <a href="#" class="border-0">
+                        <i class="fa font-22 fa-mobile color-nicebeigedark-light"></i>
+                        <span class="font-17">Install app on mobile</span>
+                    </a>      
                 </div>
             </div>        
         </div>
@@ -98,30 +102,33 @@ href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"
 
             <div class="card small-form image-center2" style="margin-top: -7%; z-index: 100;">
                 <div class="content mb-0">
-    
-                    <div class="font-21 input-style-1 has-icon input-style-1-custom input-required">
+                  <form id="signup-form">
+                    
+                    <div class="font-21 has-icon input-style-1-custom input-required">
                         <i class="input-icon fa fa-user"></i>
                         <span>Username</span>
                         <em>(required)</em>
-                        <input type="name" placeholder="Username" class="font-20">
+                        <input type="name" id="signup-username" placeholder="Username" class="font-20">
                     </div> 
+                    
     
                     <div class="font-21 input-style input-style-1-custom input-required">
                         <span>Email</span>
                         <em>(required)</em>
-                        <input class="font-20" type="email" placeholder="Email">
+                        <input id="signup-email" class="font-20" type="email" placeholder="Email">
                     </div>         
     
                     <div class="font-21 input-style input-style-1-custom input-required">
                         <span>Password: Minimum 8 Characters and 1 Number</span>
                         <em>(required)</em>
-                        <input class="font-20" type="password" placeholder="Password">
+                        <input id="signup-password" class="font-20" type="password" placeholder="Password">
                     </div>
                 <!--log-in button-->
-                <a href="#" data-menu="menu-signin" class="btn btn-m mb-3 rounded-sm text-uppercase font-900 border-nicebrown-dark bg-nicepink-light btn-center-m margin-above-button"> 
+                <button href="#" type="submit" class="btn btn-m mb-3 rounded-sm text-uppercase font-900 border-nicebrown-dark bg-nicepink-light btn-center-m margin-above-button"> 
                     <span>Create account</span>                    
-                  </a>
-                  <p style="text-align: center;">Already a user?<br><a href="#" data-menu="menu-signup">Log-in</a></p>
+                </button>
+                </form>
+                  <p style="text-align: center;">Already a user? <a href="#" data-menu="menu-signin">Log-in</a></p>
                   <br>
 
                 </div>
@@ -147,7 +154,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"
 
             </div>               
         </div>  
-    </div>    
+       
     <!--INTROPAGE ENDS HERE-->
 
 
@@ -488,48 +495,14 @@ href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"
                     <div class="clearfix"></div>
                 </div>
             </div>
-            <button href="#" class="btn btn-full btn-m shadow-l rounded-s text-uppercase font-900 bg-nicepink-dark mt-4">LOGIN</button>
+            <button href="#" class="btn btn-full btn-m shadow-l rounded-s text-uppercase font-900 bg-nicepink-dark mt-4 btn-center-m">LOGIN</button>
         </div>
         </form>
     </div>     
     <!--SIGN-IN FORM ENDS-->    
 
     <!--SIGN-UP FORM-->    
-    <div id="menu-signup" class="menu menu-box-modal rounded-m"
-    data-menu-height="360" 
-    data-menu-width="310">
-    <form id="signup-form">
-    <div class="mr-3 ml-3 mt-3">
-       <h1 class="text-uppercase font-900 mb-0">Register</h1>
-       <p class="font-11  mt-n1 mb-0">
-           Don't have an account? Register below.
-       </p>
 
-       <div class="input-style has-icon input-style-1 input-required">
-           <i class="input-icon fa fa-user font-11"></i>
-           <span>Username</span>
-           <em>(required)</em>
-           <input type="name" placeholder="Username">
-       </div> 
-       <div class="input-style has-icon input-style-1 input-required">
-           <i class="input-icon fa fa-at"></i>
-           <span>Email</span>
-           <em>(required)</em>
-           <input type="email" placeholder="Email" id="signup-email">
-       </div>         
-       <div class="input-style has-icon input-style-1 input-required">
-           <i class="input-icon fa fa-lock font-11"></i>
-           <span>Password</span>
-           <em>(required)</em>
-           <input type="password" placeholder="Choose a Password" id="signup-password">
-       </div>        
-       <p class="text-center pb-0 mb-n1 pt-1">
-           <a href="#" data-menu="menu-signin" class="text-center font-11 color-gray2-dark">Already Registered? Sign In Here.</a>
-       </p>
-       <button href="#" class="btn btn-full btn-m shadow-l rounded-s text-uppercase font-900 bg-nicebrown-dark mt-4">Register</button>
-    </div>
-    </form>
-    </div>   
     <!--SIGN-UP FORM ENDS-->    
 
 
