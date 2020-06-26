@@ -29,9 +29,29 @@ href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"
     <!-- header and footer bar go here-->
     <div class="header header-fixed header-logo-center">
         <a href="http://127.0.0.1:5500/index.html" class="header-title"><span>babyList</span></a>
-        <a href="#" class="header-icon header-icon-4 invisible" data-menu="menu-confirm" id="profileBtn">
-            <i class="fas fa-user-alt color-nicepink-light" id="usernamedisplay"></i>
+        <a href="#" class="header-icon header-icon-3" data-menu="menu-confirm">
+            <p class="font-13 color-nicepink-light" style="font-family: 'Roboto'; font-weight: 900;">Thomas</p>
           </a>
+        <a href="#" class="header-icon header-icon-4 invisible" data-menu="menu-confirm" id="profileBtn">
+            <i class="font-19 fas fa-user-alt color-nicepink-light"></i>
+          </a>
+          <div id="header-icon-2-group">
+            <button type="button" id="header-2" data-toggle="dropdown" class="header-icon header-icon-1"><i class="font-19 fas fa-bars color-nicepink-light"></i></button>    
+            <div class="dropdown-menu bg-theme border-0 shadow-l rounded-s mr-2 mt-2" aria-labelledby="header-2">
+                <div class="list-group list-custom-small pl-2 pr-3">
+                    <a href="#">
+                        <i class="fa font-18 fa-info color-niceblue-light"></i>
+                        <span>Get started</span>
+                    </a>         
+                    <a href="#" class="border-0">
+                        <i class="fa font-18 fa-plug color-nicebrown-light"></i>
+                        <span>Connect account</span>
+                    </a>        
+                </div>
+            </div>        
+        </div>
+
+
     </div>
 
     <!--
@@ -111,19 +131,10 @@ href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"
     <!--APPMAIN STARTS HERE-->
 
     <div class="page-content header-clear-medium invisible" id="appmain">
-        <div class="card full-page-card">
+        <div class="card full-page-card" style="background-color: #ffffffbb;">
             <div class="content">
 
-            <div class="card card-style mb-3">
-                <div class="row mb-0">
-                    <div class="col-4 pr-1">
-                        <a href="#" class="btn btn-m btn-full mb-3 rounded-sm text-uppercase font-900 border-nicepink-dark color-nicepink-dark bg-theme">GET STARTED</a>
-                    </div>
-                    <div class="col-4 pl-1 pr-1">
-                        <a href="#" class="btn btn-m btn-full mb-3 rounded-sm text-uppercase font-900 border-nicepink-dark color-nicepink-dark bg-theme">SHARE ACCOUNT</a>
-                    </div>
-                </div>
-                </div>
+
 
                 <!--COLLAPSE LISTS STARTS-->
 <p id="shareID-display"></p>
