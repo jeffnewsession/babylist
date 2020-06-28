@@ -30,29 +30,17 @@ href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"
     <div class="header header-fixed header-logo-center">
         <a href="http://127.0.0.1:5500/index.html" class="header-title"><span>babyList</span></a>
         <a href="#" id="userNameDisplay" class="header-icon header-icon-3 invisible" data-menu="menu-confirm">
+            
             <p class="font-13 color-nicepink-light" style="font-family: 'Roboto'; font-weight: 900;" id="userNameDisplayText"></p>
           </a>
         <a href="#" class="header-icon header-icon-4 invisible" data-menu="menu-confirm" id="profileBtn">
             <i class="font-19 fas fa-user-alt color-nicepink-light"></i>
           </a>
           <div id="header-icon-2-group">
-            <button type="button" id="barsMenu" data-toggle="dropdown" class="header-icon header-icon-1 invisible"><i class="font-19 fas fa-bars color-nicepink-light"></i></button>    
-            <div class="dropdown-menu bg-theme border-0 shadow-l rounded-s mr-2 mt-2" aria-labelledby="header-2">
-                <div class="list-group list-custom-small pl-2 pr-3">
-                    <a href="#">
-                        <i class="fa font-22 fa-info color-niceblue-light"></i>
-                        <span class="font-17">Get started</span>
-                    </a>         
-                    <a href="#" class="border-0">
-                        <i class="fa font-22 fa-plug color-nicebrown-light"></i>
-                        <span class="font-17">Share/join account</span>
-                    </a>   
-                    <a href="#" class="border-0">
-                        <i class="fa font-22 fa-mobile color-nicebeigedark-light"></i>
-                        <span class="font-17">Install app on mobile</span>
-                    </a>      
-                </div>
-            </div>        
+            
+            <a id="barsMenu" href="#" data-menu="main-menu" class="header-icon header-icon-1 invisible">
+                <i class="fa font-18 fa-bars color-niceblue-light"></i>
+            </a>   
         </div>
 
 
@@ -128,7 +116,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"
                     <span>Create account</span>                    
                 </button>
                 </form>
-                  <p style="text-align: center;">Already a user? <a href="#" data-menu="menu-signin">Log-in</a></p>
+                  <p style="text-align: center;" class="font-16">Already a user? <a href="#" data-menu="menu-signin">Log-in</a></p>
                   <br>
 
                 </div>
@@ -167,9 +155,8 @@ href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"
 
 
                 <!--COLLAPSE LISTS STARTS-->
-<p id="shareID-display"></p>
-<input id="testInput" type="text">
-<button id="testBtn">Add join code</button>
+
+
 
 
                 <!--PLAYGROUNDLIST STARTS-->              
@@ -491,7 +478,6 @@ href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"
                     <a href="#" data-menu="menu-forgot" class="font-10">Forgot Password?</a>
                 </div>
                 <div class="col-6">
-                    <a data-menu="menu-signup" href="#" class="float-right font-10">Create Account</a>
                     <div class="clearfix"></div>
                 </div>
             </div>
@@ -556,22 +542,166 @@ href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"
 
 <!--LOGOUT STARTS HERE-->
 
-    <div id="menu-confirm" class="menu menu-box-modal rounded-m" 
-         data-menu-height="200" 
-         data-menu-width="330">
-        <h1 class="text-center mt-3 pb-1" id="usermsg"></h1>
-        <p class="boxed-text-l">
-            Do you want to log-out?
-        </p>
-        <div class="row mr-3 ml-3 mb-0">
-            <div class="col-6">
-                <a href="#" class="close-menu btn btn-sm btn-full button-s shadow-l rounded-s text-uppercase font-900 bg-green1-dark" id="logout">Yes</a>
-            </div>
-            <div class="col-6">
-                <a href="#" class="close-menu btn btn-sm btn-full button-s shadow-l rounded-s text-uppercase font-900 bg-red1-dark">Cancel</a>
-            </div>
+<div id="menu-confirm" class="menu menu-box-modal rounded-m" 
+data-menu-height="200" 
+data-menu-width="330">
+<h1 class="font-20 text-center mt-3 pb-1" style="font-family: 'Roboto', sans-serif !important;">Want to log out ?</h1>
+<p class="boxed-text-l" style="font-family: 'Roboto', sans-serif !important;">
+   Thanks for using Babylist !
+</p>
+<div class="row mr-3 ml-3 mb-0">
+   <div class="col-6">
+       <a id="logout" href="#" class="close-menu btn btn-sm btn-full button-s shadow-l rounded-s text-uppercase font-900 bg-nicepink-dark" style="font-family: 'Roboto', sans-serif !important;">Yes</a>
+   </div>
+   <div class="col-6">
+       <a href="#" class="close-menu btn btn-sm btn-full button-s shadow-l rounded-s text-uppercase font-900 border-nicepink-light color-nicepink-light bg-white-dark" style="font-family: 'Roboto', sans-serif !important;">Cancel</a>
+   </div>
+</div>
+</div>  
+
+
+
+    <!------------------->
+    <!------------------->
+    <!--MAIN MENU-->
+    <!------------------->
+    <!------------------->
+    <div id="main-menu" 
+         class="menu menu-box-bottom menu-box-detached rounded-m" 
+         data-menu-height="160" 
+         data-menu-effect="menu-over">
+        <div class="list-group list-custom-small pl-1 pr-3">
+            <a href="#" data-menu="menu-getstarted">
+                <i class="font-18 fas fa-info color-niceblue-light"></i>
+                <span class="font-16">Get started</span>
+                <i class="fa fa-angle-right"></i>
+            </a>
+            <a href="#" data-menu="menu-sharejoin">
+                <i class="font-18 fab fas fa-plug color-nicebrown-light"></i>
+                <span class="font-16">Share/join account</span>
+                <i class="fa fa-angle-right"></i>
+            </a>
+            <a href="#" class="shareToLinkedIn">
+                <i class="font-18 fa fa-mobile color-dark1-light"></i>
+                <span class="font-16">Install mobile app</span>
+                <i class="fa fa-angle-right"></i>
+            </a>  
         </div>
-    </div> 
+    </div>  
+
+
+<!--GET STARTED STARTS HERE-->
+
+
+<div id="menu-getstarted" 
+class="menu menu-box-modal menu-box-detached rounded-m" 
+data-menu-height="580" 
+data-menu-width="340">
+<div class="boxed-text-xl">
+   <h3 class="text-uppercase mt-4 font-900" id="welcomeText" style="font-family: 'Roboto', sans-serif !important;"></h3>
+   
+   <p style="font-family: 'Roboto', sans-serif !important;" class="color-nicepink-light">Don't ever forget those wetwipes again!</p>
+   <p style="font-family: 'Roboto', sans-serif !important; text-align: left;">
+    <ul>   
+    <li style="text-align: left;">To start, click on one of the lists <br>and add a few items.</li>
+    <li style="text-align: left;">You can also connect with another user and synchronize your lists. And you can install this as an app on your phone. Find our more in the menu<i class="font-19" style="color: white;">_</i><i class="font-19 fas fa-bars color-dark1-light"></i><i class="font-19" style="color: white;">_</i>
+    <li style="text-align: left;"><b>WARNING:</b> This is a beta version. There might be security issues. Your credentials are safe, and noone besides yourself has access to your password. However, if you share your account, the items in your lists can, under some circumstances, be accessible to a wider circle. Please only share your account with a trusted user.</li>
+    </ul>
+</p>
+    
+
+<button href="#" type="submit" class="close-menu btn btn-m mb-3 rounded-sm text-uppercase font-900 border-nicebrown-dark bg-nicepink-light btn-center-m margin-above-button"> 
+    <span>Got it</span>                    
+</button>
+</div>
+</div> 
+
+
+
+<!--SHARE/JOIN STARTS HERE-->
+
+<div id="menu-sharejoin" class="menu menu-box-modal rounded-m" 
+data-menu-height="360" 
+data-menu-width="330">
+<h1 class="font-20 text-center mt-3 pb-1" style="font-family: 'Roboto', sans-serif !important;">Pack baby's things together ! </h1>
+<p class="boxed-text-l" style="font-family: 'Roboto', sans-serif !important;">
+ <ul>
+    <li>Click "Share this account" if you want to <b>invite</b> someone to connect to your lists.</li>
+    <li>Click "Join account" if you want to <b>join</b> someone else's account.
+        <br>
+        <i class="font-18 fab fas fa-exclamation-triangle color-nicepink-light"></i>
+        <i class="font-19" style="color: white;">-.</i> 
+        All your current lists will be lost, and replaced with the lists of the user you are joining.</li>
+ </ul>
+</p>
+<div class="row mr-3 ml-3 mb-0">
+   <div class="col-6">
+       <a id="shareBtn" data-menu="menu-sharejoin-share" href="#" class="btn btn-sm btn-full button-s shadow-l rounded-s text-uppercase font-900 border-nicepink-light color-nicepink-light bg-white-dark" style="font-family: 'Roboto', sans-serif !important;">SHARE THIS ACCOUNT</a>
+   </div>
+   <div class="col-6">
+       <a data-menu="menu-sharejoin-join" href="#" class="btn btn-sm btn-full button-s shadow-l rounded-s text-uppercase font-900 border-nicepink-light color-nicepink-light bg-white-dark" style="font-family: 'Roboto', sans-serif !important;">JOIN ACCOUNT</a>
+   </div>
+</div>
+</div>  
+
+<!--SHARE/JOIN SHARE STARTS HERE-->
+
+<div id="menu-sharejoin-share" class="menu menu-box-modal rounded-m" 
+data-menu-height="590" 
+data-menu-width="330">
+<h1 class="font-20 text-center mt-3 pb-1" style="font-family: 'Roboto', sans-serif !important;">Share ID:  </h1>
+<br>
+<p class="font-35 text-center" id="shareIDDisplay"></p>
+<br>
+<p class="font-15 boxed-text-l" style="font-family: 'Roboto', sans-serif !important;">Ask the other user to...
+    <ul>
+        <li>
+           Go to <b>Menu</b> / <b>Share&join account</b> / <b>Join account</b> 
+        </li>
+        <li>
+            Enter the Share ID above when asked. That's it! 
+         </li>
+         <li>
+            <b>WARNING:</b> This is a beta version. There might be security issues. Your credentials are safe, and noone besides yourself has access to your password. However, if you share your account, the items in your lists can, under some circumstances, be accessible to a wider circle. Please only share your account with a trusted user. 
+         </li>
+    </ul>
+</p>
+
+<button href="#" type="submit" class="close-menu btn btn-m mb-3 rounded-sm text-uppercase font-900 border-nicebrown-dark bg-nicepink-light btn-center-m margin-above-button"> 
+    <span>Got it</span>                    
+</button>
+</div>  
+
+
+
+<!--SHARE/JOIN JOIN STARTS HERE-->
+
+<div id="menu-sharejoin-join" class="menu menu-box-modal rounded-m" 
+data-menu-height="360" 
+data-menu-width="330">
+<h1 class="font-20 text-center mt-3 pb-1" style="font-family: 'Roboto', sans-serif !important;">Join an existing account</h1>
+<br>
+<p class="font-15 boxed-text-l" style="font-family: 'Roboto', sans-serif !important;">Please enter the Share ID from the other user.
+</p>
+<div class="input-style input-style-2 input-required" style="margin-right: 25%; margin-left: 25%;">
+    
+    <input id="testInput" class="font-23 form-control" type="text" placeholder="Share ID">
+</div>
+<button id="testBtn" class="btn btn-m mb-3 rounded-sm text-uppercase font-900 border-nicebrown-dark bg-nicepink-light btn-center-m margin-above-button">Submit</button>
+
+
+</div>  
+
+
+
+
+
+
+    <!------------------->
+    <!------------------->
+    <!--MAIN MENU ENDS HERE-->
+    <!------------------->
+    <!------------------->
 
 
     <!--end of div id page-->
