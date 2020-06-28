@@ -20,7 +20,12 @@ $(document).ready(function(){
 
    
 
+        //UTILITIES
 
+        document.getElementById("shareBtn").addEventListener('click', (e) => {
+            e.preventDefault();
+            document.getElementById("shareIDDisplay").innerHTML = shareID;
+        })
 
 
 
@@ -69,7 +74,8 @@ $(document).ready(function(){
     //try
     var tempShareId = Math.floor(Math.random() * 1000000);
     console.log('this is tempShareId that renews on each pageload: ' + tempShareId)
-    var shareID = "wait..."
+    var shareID = "..."
+    var userName;
     
 
     ///DECIDE TO SHOW INTROPAGE OR APPMAIN DEPENDING ON AUTH STATUS
@@ -160,8 +166,7 @@ $(document).ready(function(){
                         element2.classList.remove("invisible"); 
                         element2.classList.add('animate__animated', 'animate__fadeInUp');
                         var element3 = document.getElementById("profileBtn");
-                        element3.classList.remove("invisible");   
-                        document.getElementById("usernamedisplay").innerHTML = user.email;             
+                        element3.classList.remove("invisible");                
                     }, 100);
                     var carouselIntroPage = document.getElementById("carouselIntroPage");
                     carouselIntroPage.classList.add("invisible"); 
@@ -619,9 +624,9 @@ $(document).ready(function(){
                        if(change.type == 'added' && change.doc.id == user.uid){
                             shareID = change.doc.data().shareID
                             console.log(shareID)
-                            document.getElementById("shareID-display").innerHTML = shareID;
                             document.getElementById("userNameDisplayText").innerHTML = change.doc.data().userName;
-
+                            userName = change.doc.data().userName;
+                            document.getElementById("welcomeText").innerHTML = 'Welcome ' + userName + ' !';
                         }
                     });
                 });
@@ -684,11 +689,12 @@ $(document).ready(function(){
 //Try
         document.getElementById('testBtn').addEventListener('click', (e) => {
             
-            db.collection("usersCollection").doc(userId).set({
-                shareID: testInput.value
+            db.collection("usersCollection").doc(userId).update({
+                shareID: document.getElementById("testInput").value
             })
             .then(function() {
                 console.log("shareID updated");
+                location.reload();
             }) 
         }); 
 //end try
@@ -771,6 +777,8 @@ $(document).ready(function(){
         $.fn.hideMenu = function() {$(this).removeClass('menu-active'); $('#footer-bar').removeClass('footer-menu-hidden');$('.menu-hider').removeClass('menu-active');}; 
         
         //Add your programatically triggered menus here
+        
+
         
         
         //Menu Required Variables
