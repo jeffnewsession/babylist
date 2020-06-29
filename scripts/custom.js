@@ -20,14 +20,126 @@ $(document).ready(function(){
 
    
 
-        //UTILITIES
+        ///////UTILITIES//////
 
+
+
+        //When share button is clicked
         document.getElementById("shareBtn").addEventListener('click', (e) => {
             e.preventDefault();
             document.getElementById("shareIDDisplay").innerHTML = shareID;
         })
 
 
+
+        //UNCHECK ALL
+
+        //Uncheck all - Playground list
+        document.getElementById("uncheckplayground").addEventListener('click', (e) => {
+            db.collection('mainCollection').where("shareID", "==", shareID).where("list", "==", "playground").where("checkStatus", "==", "checked").
+            get()
+            .then(function(querySnapshot) {
+                querySnapshot.forEach(function(doc) {
+                    // doc.data() is never undefined for query doc snapshots
+                    db.collection('mainCollection').doc(doc.id).update({
+                        checkStatus: 'unchecked',
+                    });
+                });
+            })
+        })
+
+        //Uncheck all - Daytrip list
+        document.getElementById("uncheckalldaytrip").addEventListener('click', (e) => {
+            db.collection('mainCollection').where("shareID", "==", shareID).where("list", "==", "daytrip").where("checkStatus", "==", "checked").
+            get()
+            .then(function(querySnapshot) {
+                querySnapshot.forEach(function(doc) {
+                    // doc.data() is never undefined for query doc snapshots
+                    db.collection('mainCollection').doc(doc.id).update({
+                        checkStatus: 'unchecked',
+                    });
+                });
+            })
+        })
+
+        
+        //Uncheck all - Vacation list
+        document.getElementById("uncheckvacation").addEventListener('click', (e) => {
+            db.collection('mainCollection').where("shareID", "==", shareID).where("list", "==", "vacation").where("checkStatus", "==", "checked").
+            get()
+            .then(function(querySnapshot) {
+                querySnapshot.forEach(function(doc) {
+                    // doc.data() is never undefined for query doc snapshots
+                    db.collection('mainCollection').doc(doc.id).update({
+                        checkStatus: 'unchecked',
+                    });
+                });
+            })
+        })
+
+
+        //Uncheck all - Custom list
+        document.getElementById("uncheckallcustom").addEventListener('click', (e) => {
+            db.collection('mainCollection').where("shareID", "==", shareID).where("list", "==", "custom").where("checkStatus", "==", "checked").
+            get()
+            .then(function(querySnapshot) {
+                querySnapshot.forEach(function(doc) {
+                    // doc.data() is never undefined for query doc snapshots
+                    db.collection('mainCollection').doc(doc.id).update({
+                        checkStatus: 'unchecked',
+                    });
+                });
+            })
+        })
+
+
+
+        //DELETE ALL
+
+        //Delete all - Playground list
+        document.getElementById("delteplaygrounditems").addEventListener('click', (e) => {
+            db.collection('mainCollection').where("shareID", "==", shareID).where("list", "==", "playground")
+            .get()
+            .then(function(querySnapshot) {
+                querySnapshot.forEach(function(doc) {
+                    db.collection('mainCollection').doc(doc.id).delete(); 
+                });
+            })
+        })
+
+        //Delete all - Daytrip list        
+        document.getElementById("deletedaytripitems").addEventListener('click', (e) => {
+            db.collection('mainCollection').where("shareID", "==", shareID).where("list", "==", "daytrip")
+            .get()
+            .then(function(querySnapshot) {
+                querySnapshot.forEach(function(doc) {
+                    db.collection('mainCollection').doc(doc.id).delete(); 
+                });
+            })
+        })
+
+        //Delete all - Vacation list      
+        document.getElementById("deletevacationitems").addEventListener('click', (e) => {
+            db.collection('mainCollection').where("shareID", "==", shareID).where("list", "==", "vacation")
+            .get()
+            .then(function(querySnapshot) {
+                querySnapshot.forEach(function(doc) {
+                    db.collection('mainCollection').doc(doc.id).delete(); 
+                });
+            })
+        })
+ 
+
+        //Delete all - Vacation list      
+        document.getElementById("deleteallcustomitems").addEventListener('click', (e) => {
+            db.collection('mainCollection').where("shareID", "==", shareID).where("list", "==", "custom")
+            .get()
+            .then(function(querySnapshot) {
+                querySnapshot.forEach(function(doc) {
+                    db.collection('mainCollection').doc(doc.id).delete(); 
+                });
+            })
+        })        
 
 
         // Your web app's Firebase configuration
@@ -212,6 +324,9 @@ $(document).ready(function(){
                 })
                 .then(function() {
                     console.log("doc created in 'usersCollection' with shareID");
+                    setTimeout(() => {
+                        $('#menu-getstarted').showMenu();
+                    }, 2000);
                 });
                 //end try
 
@@ -246,6 +361,7 @@ $(document).ready(function(){
               }, 200);  
               var signinMenu = document.getElementById("intropage");
               signinMenu.classList.remove("invisible");         
+              location.reload();
               });
             } 
           });
@@ -663,10 +779,25 @@ $(document).ready(function(){
                             let DIV = document.getElementById(change.doc.id);
                             daytriplist.removeChild(DIV);
                         } 
+                        else if (change.type == 'removed' && change.doc.data().list == 'vacation'){
+                            const daytriplist = document.querySelector('#vacationlist');
+                            let DIV = document.getElementById(change.doc.id);
+                            daytriplist.removeChild(DIV);
+                        } 
+                        else if (change.type == 'removed' && change.doc.data().list == 'custom'){
+                            const daytriplist = document.querySelector('#customlist');
+                            let DIV = document.getElementById(change.doc.id);
+                            daytriplist.removeChild(DIV);
+                        } 
                         else if (change.type == 'modified' && change.doc.data().list == 'playground') {
                             renderListItem(change.doc);             
                         }else if (change.type == 'modified' && change.doc.data().list == 'daytrip') {
                             renderListItem2(change.doc);             
+                        }
+                        else if (change.type == 'modified' && change.doc.data().list == 'vacation') {
+                            renderListItem3(change.doc);             
+                        }else if (change.type == 'modified' && change.doc.data().list == 'custom') {
+                            renderListItem4(change.doc);             
                         }
                     });
                     
@@ -686,9 +817,10 @@ $(document).ready(function(){
         ///ENTER JOIN CODE (change shareID in Firestore)
 
 
+
 //Try
         document.getElementById('testBtn').addEventListener('click', (e) => {
-            
+
             db.collection("usersCollection").doc(userId).update({
                 shareID: document.getElementById("testInput").value
             })
@@ -699,6 +831,10 @@ $(document).ready(function(){
         }); 
 //end try
     
+
+
+
+
 
 
                
