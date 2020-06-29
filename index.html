@@ -30,10 +30,12 @@ href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"
     <div class="header header-fixed header-logo-center">
         <a href="http://127.0.0.1:5500/index.html" class="header-title"><span>babyList</span></a>
         <a href="#" id="userNameDisplay" class="header-icon header-icon-3 invisible" data-menu="menu-confirm">
-            
-            <p class="font-13 color-nicepink-light" style="font-family: 'Roboto'; font-weight: 900;" id="userNameDisplayText"></p>
+            <p class="font-13 color-nicepink-light" style="font-family: 'Roboto'; font-weight: 900;" id="userNameDisplayText">
+            </p>
+
           </a>
         <a href="#" class="header-icon header-icon-4 invisible" data-menu="menu-confirm" id="profileBtn">
+            
             <i class="font-19 fas fa-user-alt color-nicepink-light"></i>
           </a>
           <div id="header-icon-2-group">
@@ -158,7 +160,6 @@ href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"
 
 
 
-
                 <!--PLAYGROUNDLIST STARTS-->              
                 <div class="card card-style mb-3" style="margin-top: 30%;">
                     <div class="list-group list-custom-small list-icon-0 bg-nicepink-dark pl-3 pr-4">
@@ -177,16 +178,16 @@ href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"
                             <div class="input-style has-icon input-style-1-custom font-22 input-required">
                                 
                                       <!--ID to change here-->
-                                <form id="UncheckAllForm">
+
                                
-                                <button type="submit" style="margin-top: 10px;" class="btn btn-xxs btn-full float-left mb-3 rounded text-uppercase font-900 border-white-light color-nicepink-light bg-white-light underline">Uncheck all</button>
-                                </form>
+                                <button type="button" id="uncheckplayground" style="margin-top: 10px;" class="btn btn-xxs btn-full float-left mb-3 rounded text-uppercase font-900 border-white-light color-nicepink-light bg-white-light underline">Uncheck all</button>
+ 
 
                                          <!--ID to change here--> 
-                                <form id="DeleteAllForm">
+   
                                
-                                    <button type="submit" style="margin-top: 10px;" class="btn btn-xxs btn-full float-right mb-3 rounded text-uppercase font-900 border-white-light color-nicepink-light bg-white-light underline">Delete all</button>
-                                    </form>
+                                    <button type="button" id="delteplaygrounditems" style="margin-top: 10px;" class="btn btn-xxs btn-full float-right mb-3 rounded text-uppercase font-900 border-white-light color-nicepink-light bg-white-light underline">Delete all</button>
+
 
                             </div> 
                         <br><br>
@@ -245,16 +246,16 @@ href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"
                             <div class="input-style has-icon input-style-1-custom font-22 input-required">
                                 
                                       <!--ID to change here-->
-                                <form id="UncheckAllForm2">
+
                                
-                                <button type="submit" style="margin-top: 10px;" class="btn btn-xxs btn-full float-left mb-3 rounded text-uppercase font-900 border-white-light color-niceblue-light bg-white-light underline">Uncheck all</button>
-                                </form>
+                                <button type="button" id="uncheckalldaytrip" style="margin-top: 10px;" class="btn btn-xxs btn-full float-left mb-3 rounded text-uppercase font-900 border-white-light color-niceblue-light bg-white-light underline">Uncheck all</button>
+
 
                                          <!--ID to change here--> 
-                                <form id="DeleteAllForm2">
+
                                
-                                    <button type="submit" style="margin-top: 10px;" class="btn btn-xxs btn-full float-right mb-3 rounded text-uppercase font-900 border-white-light color-niceblue-light bg-white-light underline">Delete all</button>
-                                    </form>
+                                    <button type="button" id="deletedaytripitems" style="margin-top: 10px;" class="btn btn-xxs btn-full float-right mb-3 rounded text-uppercase font-900 border-white-light color-niceblue-light bg-white-light underline">Delete all</button>
+ 
 
                             </div> 
                         <br><br>
@@ -311,16 +312,16 @@ href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"
                             <div class="input-style has-icon input-style-1-custom font-22 input-required">
                                 
                                       <!--ID to change here-->
-                                <form id="UncheckAllForm3">
+
                                
-                                <button type="submit" style="margin-top: 10px;" class="btn btn-xxs btn-full float-left mb-3 rounded text-uppercase font-900 border-white-light color-nicebrown-light bg-white-light underline">Uncheck all</button>
-                                </form>
+                                    <button type="button" id="uncheckvacation" style="margin-top: 10px;" class="btn btn-xxs btn-full float-left mb-3 rounded text-uppercase font-900 border-white-light color-nicebrown-light bg-white-light underline">Uncheck all</button>
+
 
                                          <!--ID to change here--> 
-                                <form id="DeleteAllForm3">
+
                                
-                                    <button type="submit" style="margin-top: 10px;" class="btn btn-xxs btn-full float-right mb-3 rounded text-uppercase font-900 border-white-light color-nicebrown-light bg-white-light underline">Delete all</button>
-                                    </form>
+                                    <button type="button" id="deletevacationitems" style="margin-top: 10px;" class="btn btn-xxs btn-full float-right mb-3 rounded text-uppercase font-900 border-white-light color-nicebrown-light bg-white-light underline">Delete all</button>
+
 
                             </div> 
                         <br><br>
@@ -376,16 +377,16 @@ href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"
                             <div class="input-style has-icon input-style-1-custom font-22 input-required ">
                                 
                                       <!--ID to change here-->
-                                <form id="UncheckAllForm4">
+
                                
-                                <button type="submit" style="margin-top: 10px;" class="btn btn-xxs btn-full float-left mb-3 rounded text-uppercase font-900 border-white-light color-nicebeigedark-light bg-white-light underline">Uncheck all</button>
-                                </form>
+                                <button type="button" id="uncheckallcustom" style="margin-top: 10px;" class="btn btn-xxs btn-full float-left mb-3 rounded text-uppercase font-900 border-white-light color-nicebeigedark-light bg-white-light underline">Uncheck all</button>
+
 
                                          <!--ID to change here--> 
-                                <form id="DeleteAllForm4">
+
                                
-                                    <button type="submit" style="margin-top: 10px;" class="btn btn-xxs btn-full float-right mb-3 rounded text-uppercase font-900 border-white-light color-nicebeigedark-light bg-white-light underline">Delete all</button>
-                                    </form>
+                                    <button type="button" id="deleteallcustomitems" style="margin-top: 10px;" class="btn btn-xxs btn-full float-right mb-3 rounded text-uppercase font-900 border-white-light color-nicebeigedark-light bg-white-light underline">Delete all</button>
+
 
                             </div> 
                         <br><br>
@@ -465,13 +466,13 @@ href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"
                 <i class="input-icon fa fa-user font-11"></i>
                 <span>Email</span>
                 <em>(required)</em>
-                <input type="email" placeholder="Email" id="login-email">
+                <input class="font-18" type="email" placeholder="Email" id="login-email">
             </div> 
             <div class="input-style has-icon input-style-1 input-required">
                 <i class="input-icon fa fa-lock font-11"></i>
                 <span>Password</span>
                 <em>(required)</em>
-                <input type="password" placeholder="Password" id="login-password">
+                <input class="font-18" type="password" placeholder="Password" id="login-password">
             </div>   
             <div class="row">
                 <div class="col-6">
@@ -578,7 +579,7 @@ data-menu-width="330">
             </a>
             <a href="#" data-menu="menu-sharejoin">
                 <i class="font-18 fab fas fa-plug color-nicebrown-light"></i>
-                <span class="font-16">Share/join account</span>
+                <span class="font-16">Invite/join another user</span>
                 <i class="fa fa-angle-right"></i>
             </a>
             <a href="#" class="shareToLinkedIn">
@@ -596,16 +597,16 @@ data-menu-width="330">
 <div id="menu-getstarted" 
 class="menu menu-box-modal menu-box-detached rounded-m" 
 data-menu-height="580" 
-data-menu-width="340">
+data-menu-width="380">
 <div class="boxed-text-xl">
    <h3 class="text-uppercase mt-4 font-900" id="welcomeText" style="font-family: 'Roboto', sans-serif !important;"></h3>
    
-   <p style="font-family: 'Roboto', sans-serif !important;" class="color-nicepink-light">Don't ever forget those wetwipes again!</p>
+   <p style="font-family: 'Roboto', sans-serif !important;" class="color-nicepink-light font-15">Don't ever forget those wetwipes again!</p>
    <p style="font-family: 'Roboto', sans-serif !important; text-align: left;">
     <ul>   
-    <li style="text-align: left;">To start, click on one of the lists <br>and add a few items.</li>
-    <li style="text-align: left;">You can also connect with another user and synchronize your lists. And you can install this as an app on your phone. Find our more in the menu<i class="font-19" style="color: white;">_</i><i class="font-19 fas fa-bars color-dark1-light"></i><i class="font-19" style="color: white;">_</i>
-    <li style="text-align: left;"><b>WARNING:</b> This is a beta version. There might be security issues. Your credentials are safe, and noone besides yourself has access to your password. However, if you share your account, the items in your lists can, under some circumstances, be accessible to a wider circle. Please only share your account with a trusted user.</li>
+    <li class="font-15" style="text-align: left;">To start, click on one of the lists <br>and add a few items.</li>
+    <li class="font-15" style="text-align: left;">You can also connect with another user and synchronize your lists. And you can install this as an app on your phone. Find our more in the menu<i class="font-19" style="color: white;">_</i><i class="font-19 fas fa-bars color-dark1-light"></i><i class="font-19" style="color: white;">_</i>
+    <li class="font-15" style="text-align: left;"><b>WARNING:</b> This is a beta version. There might be security issues. Your credentials are safe, and noone besides yourself has access to your password. However, if you invite another user, the items in your lists can, under some circumstances, be accessible to a wider circle. Please only invite trusted users.</li>
     </ul>
 </p>
     
@@ -621,25 +622,21 @@ data-menu-width="340">
 <!--SHARE/JOIN STARTS HERE-->
 
 <div id="menu-sharejoin" class="menu menu-box-modal rounded-m" 
-data-menu-height="360" 
+data-menu-height="325" 
 data-menu-width="330">
 <h1 class="font-20 text-center mt-3 pb-1" style="font-family: 'Roboto', sans-serif !important;">Pack baby's things together ! </h1>
-<p class="boxed-text-l" style="font-family: 'Roboto', sans-serif !important;">
- <ul>
-    <li>Click "Share this account" if you want to <b>invite</b> someone to connect to your lists.</li>
-    <li>Click "Join account" if you want to <b>join</b> someone else's account.
-        <br>
-        <i class="font-18 fab fas fa-exclamation-triangle color-nicepink-light"></i>
-        <i class="font-19" style="color: white;">-.</i> 
-        All your current lists will be lost, and replaced with the lists of the user you are joining.</li>
- </ul>
+<p class="boxed-text-l font-15" style="font-family: 'Roboto', sans-serif !important;">
+ <br>
+    <i class="font-18 fab fas fa-exclamation-triangle color-nicepink-light"></i><br>
+  
+        When you join another user, all your current lists will be lost, and replaced by the lists of the user you are joining. <br><b>This can not be reversed.</b></li>
 </p>
 <div class="row mr-3 ml-3 mb-0">
    <div class="col-6">
-       <a id="shareBtn" data-menu="menu-sharejoin-share" href="#" class="btn btn-sm btn-full button-s shadow-l rounded-s text-uppercase font-900 border-nicepink-light color-nicepink-light bg-white-dark" style="font-family: 'Roboto', sans-serif !important;">SHARE THIS ACCOUNT</a>
+       <a id="shareBtn" data-menu="menu-sharejoin-share" href="#" class="btn btn-sm btn-full button-s shadow-l rounded-s text-uppercase font-900 border-nicepink-light color-nicepink-light bg-white-dark" style="font-family: 'Roboto', sans-serif !important;">INVITE USER</a>
    </div>
    <div class="col-6">
-       <a data-menu="menu-sharejoin-join" href="#" class="btn btn-sm btn-full button-s shadow-l rounded-s text-uppercase font-900 border-nicepink-light color-nicepink-light bg-white-dark" style="font-family: 'Roboto', sans-serif !important;">JOIN ACCOUNT</a>
+       <a data-menu="menu-sharejoin-join" href="#" class="btn btn-sm btn-full button-s shadow-l rounded-s text-uppercase font-900 border-nicepink-light color-nicepink-light bg-white-dark" style="font-family: 'Roboto', sans-serif !important;">JOIN USER</a>
    </div>
 </div>
 </div>  
@@ -649,22 +646,23 @@ data-menu-width="330">
 <div id="menu-sharejoin-share" class="menu menu-box-modal rounded-m" 
 data-menu-height="590" 
 data-menu-width="330">
-<h1 class="font-20 text-center mt-3 pb-1" style="font-family: 'Roboto', sans-serif !important;">Share ID:  </h1>
+<h1 class="font-20 text-center mt-3 pb-1" style="font-family: 'Roboto', sans-serif !important;">Invite ID:  </h1>
 <br>
 <p class="font-35 text-center" id="shareIDDisplay"></p>
 <br>
 <p class="font-15 boxed-text-l" style="font-family: 'Roboto', sans-serif !important;">Ask the other user to...
-    <ul>
-        <li>
-           Go to <b>Menu</b> / <b>Share&join account</b> / <b>Join account</b> 
+    <ul style="margin-right: 10%;">
+        <li class="font-15"> 
+           Go to <b>Menu</b> / <b>Invite/join user</b> / <b>Join user</b> 
         </li>
-        <li>
-            Enter the Share ID above when asked. That's it! 
-         </li>
-         <li>
-            <b>WARNING:</b> This is a beta version. There might be security issues. Your credentials are safe, and noone besides yourself has access to your password. However, if you share your account, the items in your lists can, under some circumstances, be accessible to a wider circle. Please only share your account with a trusted user. 
+        <li  class="font-15">
+            Enter the Invite ID. That's it! 
          </li>
     </ul>
+
+<p style="margin-right: 10%; margin-left: 10%;" class="font-10">
+<b>WARNING:</b> This is a beta version. There might be security issues. Your credentials are safe, and noone besides yourself has access to your password. However, if you invite another user, the items in your lists can, under some circumstances, be accessible to a wider circle. Please only invite trusted users. 
+</p>
 </p>
 
 <button href="#" type="submit" class="close-menu btn btn-m mb-3 rounded-sm text-uppercase font-900 border-nicebrown-dark bg-nicepink-light btn-center-m margin-above-button"> 
@@ -677,11 +675,11 @@ data-menu-width="330">
 <!--SHARE/JOIN JOIN STARTS HERE-->
 
 <div id="menu-sharejoin-join" class="menu menu-box-modal rounded-m" 
-data-menu-height="360" 
+data-menu-height="300" 
 data-menu-width="330">
-<h1 class="font-20 text-center mt-3 pb-1" style="font-family: 'Roboto', sans-serif !important;">Join an existing account</h1>
+<h1 class="font-20 text-center mt-3 pb-1" style="font-family: 'Roboto', sans-serif !important;">Join an existing user!</h1>
 <br>
-<p class="font-15 boxed-text-l" style="font-family: 'Roboto', sans-serif !important;">Please enter the Share ID from the other user.
+<p class="font-15 boxed-text-l" style="font-family: 'Roboto', sans-serif !important;">Please enter the Share ID <br>from the other user.
 </p>
 <div class="input-style input-style-2 input-required" style="margin-right: 25%; margin-left: 25%;">
     
